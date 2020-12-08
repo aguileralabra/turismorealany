@@ -20,8 +20,6 @@ from django.core.mail import send_mail
 from django.template import context
 from .mixins import SuperUsuarioMixin, FuncionarioUsuarioMixin
 from .managers import AgregarReservaManager
-from paypalcheckoutsdk.core import PayPalHttpClient, SandboxEnvironment
-from paypalcheckoutsdk.orders import OrdersGetRequest, OrdersCaptureRequest
 from django.db.models import Sum
 from django.core.paginator import Paginator
 
