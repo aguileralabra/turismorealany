@@ -1,0 +1,150 @@
+{% extends "base_generic.html" %}
+{% load static %}
+
+{% block content %}
+
+<div class="informaciontur"> 
+  <div class="informacion-turismo">
+    <br>
+    <h2 align="center">¿Quienes Somos?</h2>
+    <br>
+    <p>
+      Somos una empresa dedicada al rubro de arriendo, trasnporte y turismo, por lo cual,
+      tenemos una alta gamma de servicios para ofrecerles, ademas, de 
+      una fascinante atencion del personal hacia el cliente, lo que hara, de tu experiencia la mejor.
+      <br>
+      Tenemos variados servicios con mucha comodidad, como es piscinas al aire libre, calefaccion, internet 
+      , tele cable, mas.
+      <br>
+      <br>
+    </p>
+    <br>
+    <h2 align="center">¿Mision? ¿Vision?</h2>
+    <br>
+    <p>
+      Nuestra mision es otorgarle al cliente, el mejor servicio que haya probado en su vida, 
+      consigo darle la mayor satisfaccion posible, para una estadia y viaje haga sentir estar en 
+      su propio hogar
+    </p>
+    <br>
+    <p>
+      Nuestra vision es posicionarnos como los mejores en el rubro de Arriendo, turismo y trasnporte de Chile,
+       por lo que, vamos bien encaminado
+    </p>
+  </div>
+</div>
+
+
+
+  <div id="content">
+    <div class="showcase block block-border-bottom-grey">
+      <div class="container">
+        <h2 class="block-title">
+            Transporte 
+          </h2>
+        <p>Tenemos la flota de trasnporte mas grande de Chile, consigo la mayor calidad para nuestros clientes puedan
+           disfrutar comodamente el viaje, sin interrupciones ni incomodidas, sin decirles, que tambien los choferes 
+           son los mas capacitados y certificados para llevarlos sanos y salvos.
+        </p>
+        <div class="item-carousel" data-toggle="owlcarousel" data-owlcarousel-settings='{"items":4, "pagination":false, "navigation":true, "itemsScaleUp":true}'>
+          <div class="item">
+            <a href="#" class="overlay-wrapper">
+                <img src="{% static 'img/van3.jpg' %}" alt="Villaricon" class="img-responsive underlay">
+                <span class="overlay">
+                  <span class="overlay-content"> <span class="h4">Disponible: Si</span> </span>
+                </span>
+              </a>
+            <div class="item-details bg-noise">
+              <h4 class="item-title">
+                  <a href="#">Cayuca</a>
+                </h4>
+            </div>
+          </div>
+          <div class="item">
+            <a href="#" class="overlay-wrapper">
+                <img src="{% static 'img/van1.jpg' %}" alt="Project 3 image" class="img-responsive underlay">
+                <span class="overlay">
+                  <span class="overlay-content"> <span class="h4">Disponible: Si</span> </span>
+                </span>
+              </a>
+            <div class="item-details bg-noise">
+              <h4 class="item-title">
+                  <a href="#">Nehuen</a>
+                </h4>
+            </div>
+          </div>
+          <div class="item">
+            <a href="#" class="overlay-wrapper">
+                <img src="{% static 'img/van6.jpg' %}" alt="Project 3 image" class="img-responsive underlay">
+                <span class="overlay">
+                  <span class="overlay-content"> <span class="h4">Disponible: Si</span> </span>
+                </span>
+              </a>
+            <div class="item-details bg-noise">
+              <h4 class="item-title">
+                  <a href="#">Partin</a>
+                </h4>
+            </div>
+          </div>
+          <div class="item">
+            <a href="#" class="overlay-wrapper">
+                <img src="{% static 'img/van7.jpg' %}" alt="Project 3 image" class="img-responsive underlay">
+                <span class="overlay">
+                  <span class="overlay-content"> <span class="h4">Disponible: Si</span> </span>
+                </span>
+              </a>
+            <div class="item-details bg-noise">
+              <h4 class="item-title">
+                  <a href="#">Rodriguen</a>
+                </h4>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="testimonios"> 
+      <div class="constainer">
+        <div class="boxi">
+          <div class="imgBox">
+            <img src="{% static 'img/people2.jpg' %}" alt="Project 3 image" class="img-responsive underlay">
+          </div>
+          <p style="color:black;">
+            Realmente TurismoReal es una clase de turismo de Primera Categoria,
+            me siento totalmente satisfecho por el servicio y el personal, por lo cual,
+            recomiendo a todas las personas venir a usar este grandioso servicio.
+          </p>
+          <h4>Martin Praderas<br><span>Cliente</span></h4>
+        </div>
+      </div>
+      <div class="constainer">
+        <div class="boxi">
+          <div class="imgBox">
+            <img src="{% static 'img/people4.jpg' %}" alt="Project 3 image" class="img-responsive underlay">
+          </div>
+          <p style="color:black;">
+            Al comienzo sentia un poco de curiosidad del servicio, ya que, nunca tuve una referencia
+            de este lugar para saber que pasaria, pero luego cuando llege, el personal 
+            me hizo sentir como si estuviese en casa. La comodidad ahi es esplendida, 
+            juro que vendre nuevamente a este maravilloso lugar.
+          </p>
+          <h4>Manuela Bolivar<br><span>Cliente</span></h4>
+        </div>
+      </div>
+      <div class="constainer">
+        <div class="boxi">
+          <div class="imgBox">
+            <img src="{% static 'img/people6.jpg' %}" alt="Project 3 image" class="img-responsive underlay">
+          </div>
+          <p style="color:black;">
+            Un lugar de primera categoria, considero que es uno de los mejores 
+            servicios que he recibido en la vida, de tal forma, que vendria una y 
+            otra vez aqui, debido a su calidad, agradezco el servicio.
+          </p>
+          <h4>Manuel Rodriguez<br><span>Cliente</span></h4>
+        </div>
+      </div>
+</div> 
+
+  {% endblock %}

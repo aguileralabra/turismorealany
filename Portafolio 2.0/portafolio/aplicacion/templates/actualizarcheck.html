@@ -1,0 +1,28 @@
+{% extends "cliente_generic.html" %}
+{% load static %}
+
+
+{% block content %}
+
+<div class="reserva-arriendo">
+    <div class="contenedor">
+        <form action="" class="form" method="POST">
+        <div class="form-header">
+            <h1 class="form-title">Check<span> IN/OUT</span></h1>
+        </div>
+        <div class="texto-reserva">
+            <p>
+                Check
+            </p>
+        </div>
+        <label>Estado de Reserva</label><br>
+        {{ form.Estado_Reservas }}<hr><br>  
+        <br><br>
+        {% csrf_token %}
+        <input type="submit" class="form-submit" value="Modificar" onClick="verificarCasilla(this.form)">
+        <a href="/inicio">Volver al Menu</a>
+        </form>
+    </div>
+</div>
+
+{% endblock %}

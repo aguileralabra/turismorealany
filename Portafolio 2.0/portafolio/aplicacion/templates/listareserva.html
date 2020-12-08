@@ -1,0 +1,82 @@
+{% block content %}
+
+
+<h1 align="center">Turismo Real te da la bienvenida y te damos aqui el PDF de tu reserva</h1>
+<hr>
+<br>
+<h1 align="center"> TURISMO REAL</h1>
+<img src="{{ reservitapdf.departamento.Imagen_Recinto.url }}">
+
+<br>
+<h2>Nosotros somos una compañia sumamente responsable con los tiempos y el orden, por lo que, te sugerimos 
+    traer este informe de manera impresa para agilizar el movimiento.</h2>
+<br>
+<br>
+<h3>Te damos la bienvenida a una experiencia inigualable, de la cual, no dudaras en comentarlas con tus cercanos,
+     somos un servicio catalogado a nivel mundial como uno de 7 extrellas, calidad y diversion entregamos.
+</h3>
+
+{% if reservitapdf %}
+
+<br>
+<br>
+<h1>Señor {{ reservitapdf.user.cli_Nombre}} {{ reservitapdf.user.cli_Apellidos}}.</h1>
+
+<h1 align="center">El codigo de su reserva es: "{{ reservitapdf.Codigo_Reservas}}" </h1>
+
+<p align="center">El inicio de su reserva es "{{ reservitapdf.Fecha_Reserva_Inicios}}" con el termino del 
+  "{{ reservitapdf.Fecha_Reserva_Terminos}}"
+</p>
+<br>
+<br>
+
+<h2>¿Que posee el departamento? </h2>
+<p> -Calefaccion: "{{ reservitapdf.departamento.Calefaccion }}" </p>
+<p> -Internet: "{{ reservitapdf.departamento.Internet }}" </p>
+<p> -Amoblado: "{{ reservitapdf.departamento.Amoblado }}" </p>
+<p> -Television: "{{ reservitapdf.departamento.Televicion }}" </p>
+
+  <table class="table table-bordered order-table " border="1"> 
+    <thead>
+      <tr>
+        <th>Departamento</th>
+        <th>Servicio</th>
+      </tr>
+    </thead>
+  </div>
+    <tr>
+      <td>{{ reservitapdf.departamento}}</td>
+      <td>
+      {% for serc in reservitapdf.servicioextra.all %}
+      <li>{{ serc }}</li>
+      {% endfor %}
+      </td>
+    </tr>
+  </table>
+<br>
+<br>
+<h1 align="center">"{{ reservitapdf.departamento.Nombre_Departamento }}" ubicado en la direccion 
+  "{{ reservitapdf.departamento.Direccion_departamento }}" en la comuna "{{ reservitapdf.departamento.comuna }}".
+</h1>
+
+
+{% endif %}
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<h3>favor de imprimir esta Voucher.
+</h3>
+<h1>Estado: {{ reservitapdf.Estado_Reservas}}</h1>
+<h1>Si el Estado es "False" es debido a que aun debe pagar</h1>
+<h1>Si el Estado es "True" es debido a que ya ha pagado</h1>
+<br>
+<hr>
+<p align="center">Derechos Reservados de Turismo real</p>
+
+
+
+
+{% endblock %}

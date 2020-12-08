@@ -1,0 +1,215 @@
+{% extends "cliente_generic.html" %}
+{% load static %}
+
+{% block content %}
+
+{% if departamento %}
+<div class="listadoreserva">
+    <div class="container">
+        <h1><i class="fas fa-stream"></i>Departamento de Turismo Real</h1>
+        <p>Cantidad de Departamentos: "{{ departamentocount }}"</p>
+        <br>
+        <table class="table table-bordered order-table ">
+          <thead>
+          <div class="nombrestr">
+            <tr>
+              <th>Nombre</th>
+              <th>Comuna</th>
+              <th>Direccion</th>
+              <th>Disponible</th>
+              <th>Precio</th>
+              <th>Codigo</th>
+              <th>Editar</th>
+              <th>Borrar</th>
+            </tr>
+          </thead>
+        </div>
+          <tr>
+            {% for departamento in departamento %}
+            <td>{{ departamento.Nombre_Departamento}}</td>
+            <td>{{ departamento.comuna}}</td>
+            <td>{{ departamento.Direccion_departamento}}</td>
+            <td>{{ departamento.Disponible}}</td>
+            <td>${{ departamento.Valor_Diario|floatformat:1}}</td>
+            <td>{{ departamento.Codigo}}</td>
+            <td><a href="/actualizardepartamento/{{ departamento.id }}">Editar</a>
+            </td>
+            <td><a href="/deletedepartamento/{{ departamento.id }}" 
+                onClick="return confirm('¿Seguro que quieres eliminar al departamento: {{departamento.Nombre_Departamento}}?');">
+                  Borrar
+              </a></td>
+          </tr>
+          {% endfor %}
+        </table>
+        </div>
+    </div>
+</div>
+{% else %}
+<div id="resultadolisto">
+  <br> <br> <br> 
+  <h2>No hay registros de Departamentos, favor añadir</h2>
+  <br> <br> 
+  </div>    
+{% endif %}
+  <!-- Filtrado de ultimo registro-->
+  <div class="ultimo-post">
+  <h1>Ultimo Departamento añadido</h1>
+  <p> <i class="fas fa-plus-circle"></i>
+  El nombre del departamento es "{{ departamentoultimo.Nombre_Departamento }}" y su costo por dia del departamento es "${{ departamentoultimo.Valor_Diario|floatformat:2 }}"</p>
+  </div>
+  <!-- Formulario para registrar-->
+  <div class="reserva-arriendo">
+    <div class="contenedor">
+        <form action="" class="form" method="POST" enctype="multipart/form-data">
+        <div class="form-header">
+            <h1 class="form-title"><i class="fas fa-plus-circle"></i>Mantener <span> Departamento </span></h1>
+        </div> 
+        <div class="texto-reserva">
+            <p>Registrar Departamento
+            </p>
+        </div>
+                <label>Codigo del Departamento</label><br>
+                {{ form.Codigo }}
+
+                <label>Nombre Departamento</label><br>
+                <input type="text" id="Nombre_Departamento" class="" name="Nombre_Departamento" required>
+                
+                <label>Numero de Propiedad</label><br>
+                {{ form.Numero_propiedad }}
+
+                <label>Descripcion Departamento</label><br>
+                <textarea id="w3review" name="Descripcion_departamento" rows="2" cols="22,5" >
+                </textarea>
+
+                <label>Direccion del departamento</label><br>
+                <input type="text" id="Direccion_departamento" class="" name="Direccion_departamento" required>
+
+                <label>Numero de Habitaciones</label><br>
+                {{ form.habitaciones }}
+
+                <label>Numero de Baños</label><br>
+                {{ form.Baños }}
+
+                <label>Valor departamento diariamente</label><br>
+                {{ form.Valor_Diario }}
+
+                <label>Dividendo</label><br>
+                {{ form.dividendo }}
+
+                <label>Contribucion</label><br>
+                {{ form.contribucion }}
+
+                <label>Calefacción</label><br>
+                {{ form.Calefaccion }}
+
+                <label>Internet</label><br>
+                {{ form.Internet }}
+
+                <label>Amoblado</label><br>
+                {{ form.Amoblado }}
+
+                <label>Televisión</label><br>
+                {{ form.Televicion }}
+
+                <label>Disponibilidad</label><br>
+                {{ form.Disponible }}
+
+                <hr>
+                <label>Imagenes del Recinto</label><br>
+                {{ form.Imagen_Recinto }}
+
+                <label>Imagenes del Entorno</label><br>
+                {{ form.Imagen_Entorno }}
+
+                <hr>
+                <label>Comuna del Departamento</label><br>
+                {{ form.comuna }}
+
+                <label>Inventario adjudicado</label><br>
+                {{ form.inventario }}
+
+                <br><br>
+                {% csrf_token %}
+                <input class="btn btn-lg btn-primary btn-block" type="submit" value="Registrar">
+                <input class="btn btn-lg btn-primary btn-block" type="reset" value="Limpiar Formulario"><br> 
+                <p class="m-b-0 m-t">¿Deseas volver al menu? <a href="/inicio">Haga Click Aqui</a>.</p>
+        </form>
+    </div>
+  </div>
+<div class="gestiones"> 
+  <h4><i class="fas fa-users-cog"></i>Gestiones de los departamentos </h4>
+  <br>
+  <p>Crear Ciudad</p>
+  <a href="/ciudad">Ciudad</a>
+  <br>
+  <br>
+  <p>Crear Comuna</p>
+  <a href="/comuna">Comuna</a>
+  <br>
+  <br>
+  <p>Inventarios</p>
+  <a href="/inventario">Inventario</a>
+  <br>
+</div>
+  {% if departamento %}
+  <div id="content">
+    <div class="showcase block block-border-bottom-grey">
+      <div class="container">
+        <h2 class="block-title">
+          Departamentos 
+          </h2>
+        <p>Como se visualiza los departamento para los clientes.
+        </p>
+        <div class="item-carousel" data-toggle="owlcarousel" data-owlcarousel-settings='{"items":4, "pagination":false, "navigation":true, "itemsScaleUp":true}'>
+          {% for departamento in departamento %}
+          <div class="item">
+            <a href="#" class="overlay-wrapper">
+              {% if departamento.Imagen_Recinto %}
+              <img src="{{ departamento.Imagen_Recinto.url }}" alt="Villaricon" class="img-responsive underlay">
+              {% endif %}
+                <span class="overlay">
+                  <span class="overlay-content"> <span class="h4">Descripcion: {{ departamento.Descripcion_departamento}}</span> </span>
+                  <span class="overlay-content"> <span class="h4">Cantidad Baños: {{ departamento.Baños}}</span> </span>
+                  <span class="overlay-content"> <span class="h4">Calefacción: {{ departamento.Calefaccion}}</span> </span>
+                  <span class="overlay-content"> <span class="h4">Internet: {{ departamento.Internet}}</span> </span>
+                  <span class="overlay-content"> <span class="h4">Amoblado: {{ departamento.Amoblado}}</span> </span>
+                  <span class="overlay-content"> <span class="h4">Televisión: {{ departamento.Televicion}}</span> </span>
+                  <span class="overlay-content"> <span class="h4">Disponible: {{ departamento.Disponible}}</span> </span>     
+                 </span>
+              </a>
+            <div class="item-details bg-noise">
+              <h4 class="item-title">
+                <a href="#">Codigo Departamento: {{ departamento.Codigo}}</a>
+              </h4>
+              <h4 class="item-title">
+                <a href="#">Nombre departamento: {{ departamento.Nombre_Departamento}}</a>
+              </h4>
+              <h4 class="item-title">
+                  <a href="#">Numero de Propiedad: {{ departamento.Numero_propiedad}}</a>
+                </h4>
+              <h4 class="item-title">
+                  <a href="#">Direccion: {{ departamento.Direccion_departamento}}</a>
+                </h4>
+              <h4 class="item-title">
+                  <a href="#">Internet: {{ departamento.Internet}}</a>
+                </h4>
+              <h4 class="item-title">
+                  <a href="#">Valor: ${{ departamento.Valor_Diario|floatformat:1}}</a>
+                </h4>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+{% else %}
+<div id="resultadolisto">
+  <br> <br> <br> 
+  <h2>No hay registros de departamento, favor añadir</h2>
+  <br> <br> 
+  </div>
+{% endif %}
+
+{% endblock %}
+

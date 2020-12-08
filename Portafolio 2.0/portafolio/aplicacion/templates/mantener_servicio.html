@@ -1,0 +1,130 @@
+{% extends "cliente_generic.html" %}
+
+{% load static %}
+
+
+
+{% block content %}
+
+{% if servicio %}
+    <div class="listadoreserva">
+        <div class="container">
+        <h1><i class="fas fa-stream"></i>Listado de Servicios añadidos</h1>
+        <div style="height:50px"></div>
+        <p class="lead">
+        <p>Aqui podra encontrar todos los servicios hechos a lo largo del tiempo</p>
+        <p>Cantidad de Servicios Contratados: "{{ serviciosextras }}"</p>
+        <hr>
+        <input class="form-control col-md-3 light-table-filter" data-table="order-table" type="text" placeholder="Buscador..">
+        <br>
+        <br>
+        <table class="table table-bordered order-table ">
+          <thead>
+          <div class="nombrestr">
+            <tr>
+              <th>Descripcion</th>
+              <th>Direccion reunion</th>
+              <th>Direccion destino</th>
+              <th>Fecha encuentro</th>
+              <th>Valor Servicio</th>
+              <th>Modificar</th>
+              <th>Cancelar</th>
+            </tr>
+          </thead>
+        </div>
+        {% for servicio in servicio %}
+          <tr>
+            <td>{{ servicio.descrip_servicio}}</td>
+            <td>{{ servicio.direccion_reunion}}</td>
+            <td>{{ servicio.direccion_destino}}</td>
+            <td>{{ servicio.fecha_encuentro}}</td>
+            <td>${{ servicio.valor_servicio}}</td>
+            <td><a href="/actualizarservicio/{{ servicio.id }}">Modificar
+            <td><a href="/deleteservicio/{{ servicio.id }}">
+                Cancerlar
+            </a></td>
+        </tr>
+          </tr>
+        {% endfor %}
+        </table>
+        </div>
+    </div>
+{% else %}
+<div id="resultadolisto">
+  <br> <br> <br> 
+  <h2>No hay registros de Servicios, favor añadir</h2>
+  <br> <br> 
+  </div>
+{% endif %}
+  <!-- Filtrado de ultimo registro-->
+  <div class="ultimo-post">
+      <h1>El ultimo servicio añadida</h1>
+      <p> <i class="fas fa-plus-circle"></i>
+        La descripcion del servicio "{{ servicioultimo.descrip_servicio }}"</p>
+  </div>
+      <!-- Formulario para registrar-->
+<div class="reserva-arriendo">
+  <div class="contenedor">
+      <form action="" class="form" method="POST">
+        <div class="form-header">
+            <h1 class="form-title"><i class="fas fa-plus-circle"></i>Mantener <span> Servicios </span></h1>
+        </div> 
+        <div class="texto-reserva">
+            <p>Registrar Servicios
+            </p>
+        </div>
+        <label>Descripcion del Servicio</label><br>
+        {{ form.descrip_servicio }}<br><br><br>
+
+        <label>Direccion de Reunion</label><br>
+        {{ form.direccion_reunion }}<br><br><br>
+
+        <label>Direccion de Destino</label><br>
+        {{ form.direccion_destino }}<br><br><br>
+
+        <label>Fecha de encuentro</label><br>
+        {{ form.fecha_encuentro }}<br><br><br>
+
+        <label>Fecha de termino</label><br>
+        {{ form.fecha_termino_servicio }}<br><br><br>  
+
+        <label>Valor del servicio</label><br>   
+        {{ form.valor_servicio }}<br><br><br>    
+
+        <label>Conductor</label><br>   
+        {{ form.conductor }}<br><br><br>   
+
+        <label>Tour</label><br>   
+        {{ form.tour }}<br><br><br>   
+        <br><br>
+        {% csrf_token %}
+        <input class="btn btn-lg btn-primary btn-block" type="submit" value="Registrar">
+        <input class="btn btn-lg btn-primary btn-block" type="reset" value="Limpiar Formulario"><br> 
+        <p class="m-b-0 m-t">¿Deseas volver al menu? <a href="/inicio">Haga Click Aqui</a>.</p>
+      </form>
+  </div>
+</div>    <p>
+  <ul>
+    {% for servicio in reserva.servicioextra.all %}
+      <li>{{ servicio }}</li>
+    {% endfor %}
+  </ul>
+</p>
+    <div class="gestiones"> 
+      <h4><i class="fas fa-users-cog"></i>Gestiones de los Servicios </h4>
+      <br>
+      <p>Mantener Tour</p>
+      <a href="/mantener_tour"> Tour
+      <br>
+      <br>
+      <p>Mantener Vehiculo</p>
+      <a href="/mantener_vehiculo"> Vehiculo
+      <br>
+      <br>
+      <br>
+      <p>Mantener Chofer</p>
+      <a href="/mantener_conductor"> Conductor
+      <br>
+    </div>
+
+{% endblock %}

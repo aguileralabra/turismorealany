@@ -1,0 +1,106 @@
+{% extends "cliente_generic.html" %}
+
+{% load static %}
+
+
+
+{% block content %}
+
+{% if vehiculo %}
+    <div class="listadoreserva">
+        <div class="container">
+        <h1>Listado de Vehiculos añadidos</h1>
+        <div style="height:50px"></div>
+        <p class="lead">
+        <p>Aqui podra encontrar a tod@s l@s Vehiculos@s añadid@s a lo largo del tiempo</p>
+        <hr>
+        <input class="form-control col-md-3 light-table-filter" data-table="order-table" type="text" placeholder="Buscador..">
+        <br>
+        <br>
+        <table class="table table-bordered order-table ">
+          <thead>
+          <div class="nombrestr">
+            <tr>
+              <th>Patente</th>
+              <th>cant. puerta</th>
+              <th>disponibilidad</th>
+              <th>modelo</th>
+              <th>marca</th>
+              <th>Modificar</th>
+              <th>Cancelar</th>
+            </tr>
+          </thead>
+        </div>
+        {% for vehiculo in vehiculo %}
+          <tr>
+            <td>{{ vehiculo.patente}}</td>
+            <td>{{ vehiculo.cant_puerta}}</td>
+            <td>{{ vehiculo.disponibilidad_vehi}}</td>
+            <td>{{ vehiculo.modelo}}</td>
+            <td>${{ vehiculo.marca}}</td>
+            <td><a href="/actualizarvehiculo/{{ vehiculo.id }}">Modificar
+            <td><a href="/deletevehiculo/{{ vehiculo.id }}">
+                Cancerlar
+            </a></td>
+        </tr>
+          </tr>
+        {% endfor %}
+        </table>
+        </div>
+    </div>
+    
+{% else %}
+<div id="resultadolisto">
+  <br> <br> <br> 
+  <h2>No hay registros de vehiculos, favor añadir</h2>
+  <br> <br> 
+  </div>
+{% endif %}
+
+<br>  
+<div class="reserva-arriendo">
+ <div class="contenedor">
+     <form action="" class="form" method="POST" enctype="multipart/form-data">
+     <div class="form-header">
+         <h1 class="form-title">Añadir<span> Vehiculo</span></h1>
+     </div> 
+     <div class="texto-reserva">
+         <p>Aqui podras añadir a Vehiculos
+         </p>
+     </div>
+              <label>Patente</label><br>
+              {{ form.patente }}<br><br><br>
+
+              <label>Color del Vehiculo(Primario)</label><br>
+              {{ form.color_vehiculo }}<br><br><br>
+
+              <label>Cantidad de Puertas</label><br>
+              {{ form.cant_puerta}}<br><br><br>
+
+              <label>Aire Acondicionado</label><br>
+              {{ form.aire_acondicionado }}<br><br><br>
+
+              <label>Cantidad de Asientos</label><br>
+              {{ form.cant_asiento }}<br><br><br>  
+
+              <label>Disponibilidad</label><br>   
+              {{ form.disponibilidad_vehi }}<br><br><br>    
+  
+              <label>Imagen del Vehiculo</label><br>   
+              {{ form.imagen_vehiculo }}<br><br><br>   
+
+              <label>Modelo</label><br>   
+              {{ form.modelo }}<br><br><br>   
+
+              <label>Marca</label><br>   
+              {{ form.marca }}<br><br><br>  
+              <br><br>
+              {% csrf_token %}
+              <input type="submit" class="form-submit" value="Reservar" onClick="verificarCasilla(this.form)">
+              <input type="reset" class="form-submit" value="Limpiar Formulario">
+              <a href="/mantener_servicio">Volver a Mantencion Servicio</a>
+    </form>
+ </div>
+</div>
+
+{% endblock %}

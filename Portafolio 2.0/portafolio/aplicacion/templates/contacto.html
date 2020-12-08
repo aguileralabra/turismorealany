@@ -1,0 +1,49 @@
+{% extends "cliente_generic.html" %}
+{% load static %}
+
+{% block content %}
+<div class="contacto">
+    <div class="contacto-contenido">
+        <div class="titulo-contacto">
+            <h2>Contacto</h2>
+        </div>
+        <div class="escritura-contacto">
+            <h4>Contacto Personal</h4>
+            <hr>
+            <p>Jonathan cabrera</p>
+            <i class="fa fa-phone fa-fw text-primary"></i> +569 4353 1445
+            <br>
+            <br>
+            <p>Ezequiel Riquelme</p>
+            <i class="fa fa-phone fa-fw text-primary"></i> +569 5776 2043
+            <br>
+            <br>
+            <p>johnny Carrasco</p>
+            <i class="fa fa-phone fa-fw text-primary"></i> +569 5112 8465
+            <br>
+            <br>
+            <p>Diego Lorenzini</p>
+            <i class="fa fa-phone fa-fw text-primary"></i> +569 3408 9997
+            <br><br>
+        </div>
+        <div class="formulario-contacto">
+
+            <h4>Formulario</h4>
+            <hr>
+            <form class="form-contac" method="POST" action="" >
+                <p>Asunto</p>
+                <input type="text" id="celular" class="form-input" name="asunto" required>
+                
+                <p>Correo a enviar</p>
+                <input type="email" id="celular" class="form-input" name="correoaenviar" required>
+
+                <p>Descripcion</p>
+                <textarea id="w3review" name="descripcioncontacto" rows="2" cols="22,5" >
+                </textarea>
+                {% csrf_token %}
+                <input type="submit" class="submit" value="Enviar" onClick="return confirm('Al momento de revisar su mensaje, le contestaremos al correo que ha colocado, gracias estimad@ {{ user }}, presione Aceptar. ');">
+            </form> 
+        </div>
+    </div>
+</div>
+{% endblock %}

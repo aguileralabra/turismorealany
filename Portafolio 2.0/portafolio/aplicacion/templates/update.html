@@ -1,0 +1,26 @@
+{% extends "cliente_generic.html" %}
+{% load static %}
+
+
+{% block content %}
+  <div class="reserva-arriendo">
+    <div class="contenedor">
+        <form action="" class="form" method="POST">
+        <div class="form-header">
+            <h1 class="form-title"><i class="fas fa-plus-circle"></i>Cambiar <span> Contraseña </span></h1>
+        </div> 
+        <div class="texto-reserva">
+            <p>Actualizacion de contraseña de: {{ user.username }}.
+            </p>
+        </div>
+              <label>Contrasñea Actual</label><br>
+              <input type="password" class="form-control" name="password1" placeholder="contraseña actual">
+              <label>Nueva Contraseña</label><br>
+              <input type="password" class="form-control" name="password2" placeholder="nueva contraseña">
+              <br><br>
+                 {% csrf_token %}
+                 <input class="btn btn-lg btn-primary btn-block" type="submit" value="Actualizar Contraseña">
+                </form>
+             </div>
+         </div>
+{% endblock %}

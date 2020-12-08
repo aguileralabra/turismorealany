@@ -1,0 +1,54 @@
+{% extends "cliente_generic.html" %}
+
+{% load static %}
+
+
+
+{% block content %}
+
+<br>  
+<div class="reserva-arriendo">
+ <div class="contenedor">
+     <form action="" class="form" method="POST">
+     <div class="form-header">
+         <h1 class="form-title">Modificar<span> Vehiculo</span></h1>
+     </div> 
+     <div class="texto-reserva">
+         <p>Aqui podras modificar al Vehiculo
+         </p>
+     </div>
+              <label>Patente</label><br>
+              {{ form.patente }}<br><br><br>
+
+              <label>Color del Vehiculo(Primario)</label><br>
+              {{ form.color_vehiculo }}<br><br><br>
+
+              <label>Cantidad de Puertas</label><br>
+              {{ form.cant_puerta}}<br><br><br>
+
+              <label>Aire Acondicionado</label><br>
+              {{ form.aire_acondicionado }}<br><br><br>
+
+              <label>Cantidad de Asientos</label><br>
+              {{ form.cant_asiento }}<br><br><br>  
+
+              <label>Disponibilidad</label><br>   
+              {{ form.disponibilidad_vehi }}<br><br><br>    
+  
+              <label>Imagen del Vehiculo</label><br>   
+              {{ form.imagen_vehiculo }}<br><br><br>   
+
+              <label>Modelo</label><br>   
+              {{ form.modelo }}<br><br><br>   
+
+              <label>Marca</label><br>   
+              {{ form.marca }}<br><br><br>  
+              <br><br>
+              {% csrf_token %}
+              <input type="submit" class="form-submit" value="Modificar" onClick="verificarCasilla(this.form)">
+              <input type="reset" class="form-submit" value="Limpiar Formulario">
+    </form>
+ </div>
+</div>
+
+{% endblock %}

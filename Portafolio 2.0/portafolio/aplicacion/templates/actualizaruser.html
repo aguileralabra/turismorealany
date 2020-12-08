@@ -1,0 +1,47 @@
+{% extends "cliente_generic.html" %}
+
+{% load static %}
+
+
+
+{% block content %}
+<div class="reserva-arriendo">
+ <div class="contenedor">
+     <form action="" class="form" method="POST">
+     <div class="form-header">
+         <h1 class="form-title"><i class="fas fa-plus-circle"></i>Actualizar <span> Cliente </span></h1>
+     </div> 
+     <div class="texto-reserva">
+         <p>Actualizar de Cliente
+         </p>
+     </div>
+           <label>Rut</label><br>
+           {{ form.cli_Rut }}<br><br>
+           <label>Nombre/s</label><br>
+           {{ form.cli_Nombre }}<br><br> 
+           <label>Apellido/s</label><br>
+           {{ form.cli_Apellidos }}<br><br> 
+           <label>Edad</label><br>
+           {{ form.cli_Edad }}<br><br> 
+           <label>Nacionalidad</label><br>
+           {{ form.cli_Nacionalidad }}<br><br> 
+           <label>Correo Electronico</label><br>   
+           {{ form.email }}<br><br> 
+           <label>Telefono</label><br>
+           {{ form.cli_Telefono }}<br><br> 
+           <label>Nombre Usuario</label><br>
+           {{ form.username }}<br><br> 
+           <label>Activar/Desactivar Usuario</label>
+           {{ form.is_active}}<br><br>  
+           <label>Activar/Desactivar MODO: Funcionario</label>
+           {{ form.funcionario}}<br><br>  
+
+              <br><br>
+              {% csrf_token %}
+              <input class="btn btn-lg btn-primary btn-block" type="submit" value="Actualizar">
+              <input class="btn btn-lg btn-primary btn-block" type="reset" value="Limpiar Formulario"><br> 
+              <p class="m-b-0 m-t">¿Deseas volver al menu? <a href="/inicio">Haga Click Aqui</a>.</p>
+      </form>
+  </div>
+</div>
+{% endblock %}

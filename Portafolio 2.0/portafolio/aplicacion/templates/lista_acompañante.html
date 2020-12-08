@@ -1,0 +1,54 @@
+{% extends "cliente_generic.html" %}
+{% load static %}
+
+
+{% block content %}
+
+{% if acompañante %}
+
+<div class="listadoreserva">
+    <div class="container">
+        <h1>Tus Acompañantes</h1>
+        <br>
+        <table class="table table-bordered order-table ">
+          <thead>
+          <div class="nombrestr">
+            <tr>
+              <th>Rut</th>
+              <th>Nombre</th>
+              <th>Apellido</th>
+              <th>Correo</th>
+              <th>Telefono</th>
+              <th>Editar</th>
+              <th>Eliminar</th>
+            </tr>
+          </thead>
+        </div>
+          <tr>
+            {% for acompañante in acompañante %}
+            <td>{{ acompañante.acom_rut}}</td>
+            <td>{{ acompañante.acom_nombre}}</td>
+            <td>{{ acompañante.acom_apellidos}}</td>
+            <td>{{ acompañante.acom_email}}</td>
+            <td>{{ acompañante.acom_telefono}}</td>
+            <td><a href="/editacom/{{ acompañante.id }}">Editar</a>
+            </td>
+            <td><a href="/deleteacomp/{{ acompañante.id }}" 
+                onClick="return confirm('¿Seguro que quieres eliminar a tu acompañante: {{acompañante.acom_rut}}?');">
+                  Borrar
+              </a></td>
+          </tr>
+          {% endfor %}
+        </table>
+        </div>
+    </div>
+</div>
+{% else %}
+<div id="resultadolisto">
+  <br> <br> <br> 
+  <h2>No hay registros de acompañantes, favor añadir</h2>
+  <br> <br> 
+  </div>
+{% endif %}
+
+{% endblock %}

@@ -1,0 +1,341 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  {% block title %}<title>Turismo Real</title>{% endblock %}
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <link href="{% static 'lib/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'lib/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet">
+  <link href="{% static 'lib/owlcarousel/owl.carousel.min.css' %}" rel="stylesheet">
+  <link href="{% static 'lib/owlcarousel/owl.theme.min.css' %}" rel="stylesheet">
+  <link href="{% static 'lib/owlcarousel/owl.transitions.min.css' %}" rel="stylesheet">
+  <link href="{% static 'css/style.css' %}" rel="stylesheet">
+  <link href="{% static 'img/logo.PNG' %}" rel="icon"> 
+  <link href="{% static 'css/cliente.css' %}" rel="stylesheet">
+  <link href="{% static 'css/perfil.css' %}" rel="stylesheet">
+  <link href="{% static 'css/servicios.css' %}" rel="stylesheet">
+  <link href="{% static 'css/testimonio.css' %}" rel="stylesheet">
+  <link href="{% static 'css/reserva.css' %}" rel="stylesheet">
+  <link href="{% static 'css/contacto.css' %}" rel="stylesheet">
+  <link href="{% static 'css/galeria-cliente.css' %}" rel="stylesheet">
+  <link href="{% static 'css/carrusel.css' %}" rel="stylesheet">
+  <link href="{% static 'css/administrador.css' %}" rel="stylesheet">
+  <link rel="manifest" href="{% static 'manifest.json' %}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.css" integrity="sha512-QAY8RpaU+5mx/feUcMx9GlZda/DWr2b7MFnFAPuLKSsVOnBOSGMHZDv4e1HbeLrjGFlhaFYIC29vKGCpOjQryw==" crossorigin="anonymous" />
+  <script type="text/javascript">
+    (function(document) {
+      'use strict';
+  
+      var LightTableFilter = (function(Arr) {
+  
+      var _input;
+  
+      function _onInputEvent(e) {
+        _input = e.target;
+        var tables = document.getElementsByClassName(_input.getAttribute('data-table'));
+        Arr.forEach.call(tables, function(table) {
+        Arr.forEach.call(table.tBodies, function(tbody) {
+          Arr.forEach.call(tbody.rows, _filter);
+        });
+        });
+      }
+  
+      function _filter(row) {
+        var text = row.textContent.toLowerCase(), val = _input.value.toLowerCase();
+        row.style.display = text.indexOf(val) === -1 ? 'none' : 'table-row';
+      }
+  
+      return {
+        init: function() {
+        var inputs = document.getElementsByClassName('light-table-filter');
+        Arr.forEach.call(inputs, function(input) {
+          input.oninput = _onInputEvent;
+        });
+        }
+      };
+      })(Array.prototype);
+  
+      document.addEventListener('readystatechange', function() {
+      if (document.readyState === 'complete') {
+        LightTableFilter.init();
+      }
+      });
+  
+    })(document);
+    </script>
+
+      <script>
+      function token(name) {
+        let cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            const cookies = document.cookie.split(';');
+            for (let i = 0; i < cookies.length; i++) {
+                const cookie = cookies[i].trim();
+                // Does this cookie string begin with the name we want?
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+      }
+      const csrftoken = token('csrftoken');
+      </script>
+  <!-- Notificaciones -->
+          <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-app.js"></script>
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+        https://firebase.google.com/docs/web/setup#available-libraries -->
+<link href="{% static 'css/cliente.css' %}" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.css" integrity="sha512-QAY8RpaU+5mx/feUcMx9GlZda/DWr2b7MFnFAPuLKSsVOnBOSGMHZDv4e1HbeLrjGFlhaFYIC29vKGCpOjQryw==" crossorigin="anonymous" />
+</head>
+<body class="page-index has-hero">
+  <div id="background-wrapper" class="buildings" data-stellar-background-ratio="0.1">
+    <div id="navigation" class="wrapper">
+      <div class="header-hidden collapse">
+        <div class="header-hidden-inner container">
+        </div>
+      </div>
+      <div class="header">
+        <div class="header-inner container">
+          <div class="row">
+            <div class="col-md-8">
+              <a class="navbar-brand" href="/inicio" title="inicio cliente">
+                <h1 class="hidden">
+                    Turismo Real
+                </h1>
+              </a>
+            </div>
+            <div class="col-md-4">
+              <ul class="list-inline user-menu pull-right">
+                <li class="user-login"><i class="fa fa-sign-in text-primary"></i> <a href="{% url 'cliente_app:logout' %}" class="text-uppercase" onClick="return confirm('¿Desea {{ user }} cerrar session?, si es un si, presione Aceptar. ');"><i class="fas fa-sign-out-alt"></i> Cerrar Session</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="hero" id="highlighted">
+      <div class="inner">
+        <div id="highlighted-slider" class="container">
+          <div class="item-slider" data-toggle="owlcarousel" data-owlcarousel-settings='{"singleItem":true, "navigation":true, "transitionStyle":"fadeUp"}'>
+            <div class="item">
+              <div class="row">
+                <div class="col-md-6 col-md-push-6 item-caption">
+                  {% if request.user.is_staff %}
+                  <h2 class="h1 text-weight-light">
+                    <i class="fas fa-user-check"></i> Administrador <span class="text-primary">{{ user }} </span> 
+                  </h2>
+                  {% endif %}
+                  {% if not request.user.is_staff and not request.user.funcionario %}
+                  <h2 class="h1 text-weight-light">
+                    <i class="fas fa-user-check"></i> Bienvenido  <span class="text-primary">{{ user }}</span> 
+                  </h2>
+                  {% endif %}
+                  {% if request.user.funcionario %}
+                  <h2 class="h1 text-weight-light">
+                    <i class="fas fa-user-check"></i> Bienvenido Funcionario  <span class="text-primary">{{ user }}</span> 
+                  </h2>
+                  {% endif %}
+                </div>
+              </div>
+            </div>
+            <div class="item">
+              <div class="row">
+                <div class="col-md-6 text-right-md item-caption">
+                  <h2 class="h1 text-weight-light">
+                      <span class="text-primary">Turismo Real</span> te ofrece calidad
+                  </h2>
+                  <p>Registrate y usa nuestros servicios, te garantizamos, que sera tu mejor experiencia
+                    , debido a que nuestra empresa, va 100% enfocado en tu necesidad, nuestro es lema "Disfrutar y disfrutar", te esperamos.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+{% if request.user.is_staff %}
+<div class="Containers">
+  <nav class="nav-main">
+      <ul class="botones">
+          <li> 
+              <a  href="/inicio"> <strong><i class="fas fa-bars"></i> Menu Principal </strong> </a>
+          </li>
+          <li> 
+              <a  href="/perfiladministrador"> <strong><i class="fas fa-user-circle"></i> Mi Perfil </strong> </a>
+          </li>
+      </ul>
+  </nav>
+</div>
+{% endif %}
+
+{% if not request.user.is_staff and not request.user.funcionario %}
+
+{% block sidebar %}
+<div class="Containers">
+    <nav class="nav-main">
+        <ul class="botones">
+            <li> 
+                <a  href="/inicio"> <strong><i class="fas fa-bars"></i> Inicio </strong> </a>
+            </li>
+            <li> 
+                <a  href="/perfil"> <strong><i class="fas fa-user-circle"></i> Perfil </strong> </a>
+            </li>
+            <li>
+                <a href="/reserva"><strong><i class="fas fa-calendar-plus"></i> Reservar </strong></a>
+            </li>
+            <li> 
+              <a  href="/cliente"> <strong><i class="fas fa-calendar-alt"></i> Tus Reservas </strong> </a>
+          </li>
+            <li>
+                <a href="/contacto"><strong><i class="fas fa-question-circle"></i> Contacto  </strong></a>
+            </li>
+        </ul>
+    </nav>
+</div>
+{% endblock %}
+{% endif %}
+
+{% if request.user.funcionario %}
+
+<div class="Containers">
+  <nav class="nav-main">
+      <ul class="botones">
+          <li> 
+              <a  href="/inicio"> <strong><i class="fas fa-bars"></i> Menu Principal </strong> </a>
+          </li>
+          <li> 
+            <a  href="/multa"> <strong><i class="fas fa-pager"></i> Multa </strong> </a>
+        </li>
+          <li> 
+              <a  href="/perfil_funcionario"> <strong><i class="fas fa-user-circle"></i> perfil </strong> </a>
+          </li>
+      </ul>
+  </nav>
+</div>
+{% endif %}
+
+
+<script languaje="javascript">
+  function habilita(form)
+  {
+  form.intereses[0].disabled = false;
+  form.intereses[1].disabled = false;
+  form.intereses[2].disabled = false;
+  }  
+  function deshabilita(form)
+  {
+  form.intereses[0].disabled = true;
+  form.intereses[1].disabled = true;
+  form.intereses[2].disabled = true;
+  }
+</script>
+<script languaje="javascript">
+  function verificarCasilla(form)
+  {
+      if (form.acepto.checked == false)
+      {
+      alert("Debes aceptar los términos del contrato antes de continuar");
+      form.acepto.focus(); return true;
+      }
+  form.submit()
+  }
+</script>
+<script language="javascript">
+  function agregarOpciones(form)
+  {
+  var selec = form.tipos.options;
+  var combo = form.estilo.options;
+  combo.length = null;
+      if (selec[0].selected == true)
+      {
+      var seleccionar = new Option("<-- esperando selección","","","");
+      combo[0] = seleccionar;
+      }
+      if (selec[1].selected == true)
+      {
+      var popular1 = new Option("Banco Estado","","","");
+      combo[0] = popular1;
+      }
+      if (selec[2].selected == true)
+      {
+      var academica1 = new Option("Banco Estado","","");
+      var academica2 = new Option("Banco Falabella","","","");
+      var academica3 = new Option("Banco Ripley","","","");
+      var academica4 = new Option("Banco Santander","","","");
+      var academica5 = new Option("Banco Chile","","","");
+      combo[0] = academica1;
+      combo[1] = academica2;
+      combo[2] = academica3;
+      combo[3] = academica4;
+      combo[4] = academica5;
+      }
+  }
+  </script>
+
+
+  {% block content %}
+    
+    
+  {% endblock %}
+  <footer id="footer" class="block block-bg-grey-dark" data-block-bg-img="" data-stellar-background-ratio="0.4">
+    <div class="container">
+      <div class="row" id="contact">
+        <div class="col-md-3">
+          <address>
+              <strong>Turismo Real informacion</strong>
+              <br>
+              <i class="fa fa-map-pin fa-fw text-primary"></i> Los leones, Providencia
+              <br>
+              <i class="fa fa-phone fa-fw text-primary"></i> +569 4353 1445
+              <br>
+              <i class="fa fa-envelope-o fa-fw text-primary"></i> j.aguileral@alumnos.duoc.cl
+              <br>
+            </address>
+        </div>
+      <br>
+      <seccion class="social">
+          <p>Redes sociales</p>
+          <div class="links">
+              <a href="#">
+                  <i class="fab fa-facebook-f">  </i>
+              </a>
+              <a href="#">
+                  <i class="fab fa-whatsapp">  </i>
+              </a>
+
+              <a href="#">
+                  <i class="fab fa-instagram">  </i>
+              </a>
+
+              <a href="https://www.youtube.com/watch?v=cuK8v5t7_nA">
+                  <i class="fab fa-youtube">  </i>
+              </a>
+          </div>
+      </seccion>
+      <br>   
+      <div class="row subfooter">
+        <div class="col-md-7">
+          <p>Derechos Reservados por Turismo Real</p>
+        </div>
+      </div>
+      <a href="#top" class="scrolltop">Top</a>
+    </div>
+  </footer>
+  <script src="{% static 'lib/jquery/jquery.min.js' %}"></script>
+  <script src="{% static 'lib/bootstrap/js/bootstrap.min.js' %}"></script>
+  <script src="{% static 'lib/owlcarousel/owl.carousel.min.js' %}"></script>
+  <script src="{% static 'lib/waypoints/waypoints.min.js' %}"></script>
+  <script src="{% static 'lib/counterup/counterup.min.js' %}"></script>
+  <script src="{% static 'js/custom.js' %}"></script>
+  <script src="{% static 'js/color-switcher.js' %}"></script>
+  <script src="{% static 'swInstall.js' %}"></script>
+
+</body>
+</html>

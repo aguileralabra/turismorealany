@@ -1,0 +1,110 @@
+{% extends "cliente_generic.html" %}
+
+{% load static %}
+
+
+
+{% block content %}
+
+{% if reserva %}
+    <div class="listadoreserva">
+        <div class="container">
+        <h1><i class="fas fa-stream"></i>Listado de Reservas </h1>
+        <div style="height:50px"></div>
+        <p class="lead">
+        <p>Aqui podra encontrar a todas tus reservas hechas a lo largo del tiempo</p>
+        <p>Cantidad de Reservas: "{{ reservacoun }}"</p>
+        <hr>
+        <input class="form-control col-md-3 light-table-filter" data-table="order-table" type="text" placeholder="Buscador..">
+        <br>
+        <br>
+        <table class="table table-bordered order-table ">
+          <thead>
+          <div class="nombrestr">
+            <tr>
+              <th>Codigo</th>
+              <th>Fecha Inicio</th>
+              <th>Fecha Termino</th>
+              <th>Cliente</th>
+              <th>Modificar</th>
+              <th>Cancelar</th>
+              <th>Detalle</th>
+            </tr>
+          </thead>
+        </div>
+        {% for reserva in reserva %}
+          <tr>
+            <td>{{ reserva.Codigo_Reserva}}</td>
+            <td>{{ reserva.Fecha_Reserva_Inicio}}</td>
+            <td>{{ reserva.Fecha_Reserva_Termino}}</td>
+            <td>{{ reserva.user}}</td>
+            <td><a href="/actualizarreserva/{{ reserva.id }}">Modificar</td>
+            <td><a href="/deletereserva/{{ reserva.id }}">
+                Cancerlar
+            </a></td>
+            <td><a href="/detailreserva/{{ reserva.id }}">Detalle</td>
+
+        </tr>
+          </tr>
+        {% endfor %}
+        </table>
+        </div>
+    </div>
+    {% if is_paginated %}
+    <section class="paginacion">
+			<ul>
+				<li><a href="pagina1.html" class="active">1</a></li>
+				<li><a href="pagina2.html">2</a></li>
+				<li><a href="pagina3.html">3</a></li>
+				<li><a href="pagina4.html">4</a></li>
+				<li><a href="pagina5.html">5</a></li>
+			</ul>
+    </section>
+    {% endif %}
+    {% else %}
+    <div id="resultadolisto">
+      <br> <br> <br> 
+      <h2>No hay registros de Reservas, favor añadir</h2>
+      <br> <br> 
+      </div>
+    {% endif %}
+    <!-- Filtrado de ultimo registro-->
+    <div class="ultimo-post">
+    <h1>La ultima reserva añadida</h1>
+    <p> <i class="fas fa-plus-circle"></i>
+      El codigo de Reserva es "{{ reservaultima.Codigo_Reserva }}", cliente que lo ha solicitado "{{ reservaultima.user }}"</p>
+    </div>
+    <!-- Formulario para registrar-->
+   <br>  
+   <div class="reserva-arriendo">
+    <div class="contenedor">
+        <form action="" class="form" method="POST">
+        <div class="form-header">
+            <h1 class="form-title"><i class="fas fa-plus-circle"></i>Mantener<span> Reserva </span></h1>
+        </div> 
+        <div class="texto-reserva">
+            <p>Generar Reserva
+            </p>
+        </div>
+              <label>Fecha de Ingreso</label><br>
+              {{ form.Fecha_Reserva_Inicio }}<hr><br>
+              <label>Fecha de Salida</label><br>
+              {{ form.Fecha_Reserva_Termino }}<hr><br>
+              <label>Departamento a Elegir</label><br>
+              {{ form.departamento }}<hr><br>
+              <label>Cantidad de dias</label><br>
+              {{ form.Cantidad_Dias }}<hr><br>
+              <label>Servicios Extras</label><br>
+              {{ form.servicioextra }}<hr><br>  
+              <label>Usuario</label><br>   
+              {{ form.user }}<hr><br>       
+                 <br><br>
+                 {% csrf_token %}
+                 <input type="submit" class="form-submit" value="Reservar" onClick="verificarCasilla(this.form)">
+                 <input type="reset" class="form-submit" value="Limpiar Formulario">
+                 <a href="/inicio">Volver al Menu</a>
+                 </form>
+             </div>
+         </div>
+
+{% endblock %}

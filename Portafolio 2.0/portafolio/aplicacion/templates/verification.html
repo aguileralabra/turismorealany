@@ -1,0 +1,25 @@
+{% extends "base_generic.html" %}
+{% load static %}
+
+{% block content %}
+
+<div class="reserva-arriendo">
+ <div class="contenedor">
+     <form action="" class="form" method="POST">
+     <div class="form-header">
+         <h1 class="form-title"><i class="fas fa-plus-circle"></i>Verificar <span> Cuenta </span></h1>
+     </div> 
+     <div class="texto-reserva">
+         <p>Ingrese el codigo para verificar su son verificos sus datos, estos fueron enviados a su correo electronico.
+         </p>
+     </div>
+           <label>Ingrese codigo</label><br>
+           <input type="text" name="codregistro" placeholder="ingrese codigo enviado a su mail">
+           <br><br>
+              {% csrf_token %}
+              <input class="btn btn-lg btn-primary btn-block" type="submit" value="Login">
+            </form>
+          </div>
+      </div>
+
+{% endblock %}

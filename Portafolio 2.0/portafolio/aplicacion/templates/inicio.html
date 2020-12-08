@@ -1,0 +1,369 @@
+{% extends "cliente_generic.html" %}
+{% load static %}
+
+
+{% block content %}
+{% if request.user.funcionario %}
+
+<div class="listadoreserva">
+  <div class="container">
+      <h1>Bienvenido</h1>
+      <div style="height:50px"></div>
+      <p class="lead">
+      <p>Listado de reservas</p>
+      <hr>
+      <p></p>
+      <input class="form-control col-md-3 light-table-filter" data-table="order-table" type="text" placeholder="Buscador..">
+      <br>
+      <br>
+      <table class="table table-bordered order-table ">
+        <thead>
+        <div class="nombrestr">
+          <tr>
+            <th>Codigo</th>
+            <th>Nombre</th>
+            <th>Fecha</th>
+            <th>Estado</th>
+            <th>Check In/Out</th>
+            <th>Voucher</th>
+          </tr>
+        </thead>
+      </div>
+      {% for reserva in reserva %}
+        <tr>
+          <td>{{ reserva.Codigo_Reservas}}</td>
+          <td>{{ reserva.user.cli_Nombre}}</td>
+          <td>{{ reserva.Fecha_Reserva_Inicios}}</td>
+          <td>{{ reserva.Estado_Reservas}}</td>
+          <td><a href="/actualizarcheck/{{ reserva.id }}">Check</a></td>
+          <td><a href="{% url 'cliente_app:listareservafuncionario' reserva.id %} " target="_blank">Voucher</a></td>
+        </tr>
+      {% endfor %}
+      </table>
+      </div>
+  </div>
+  <hr>
+  <div class="listadoreserva">
+    <div class="container">
+        <div style="height:50px"></div>
+        <p class="lead">
+        <p>Pagados</p>
+        <br>
+        <table class="table table-bordered order-table ">
+          <thead>
+          <div class="nombrestr">
+            <tr>
+              <th>Codigo</th>
+              <th>Fecha</th>
+              <th>Cantidad dias</th>
+              <th>Monto Pagado</th>
+              <th>Check In</th>
+            </tr>
+          </thead>
+        </div>
+        {% for reservatrue in reservatrue %}
+          <tr>
+            <td>{{ reservatrue.id}}</td>
+            <td>{{ reservatrue.date_sale}}</td>
+            <td>{{ reservatrue.count}}</td>
+            <td>{{ reservatrue.amount}}</td>
+            <td>Check In</td>
+          </tr>
+        {% endfor %}
+        </table>
+        </div>
+    </div>
+
+    <div class="listadoreserva">
+      <div class="container">
+          <div style="height:50px"></div>
+          <p class="lead">
+          <p>No Pagados</p>
+          <br>
+          <table class="table table-bordered order-table ">
+            <thead>
+            <div class="nombrestr">
+              <tr>
+                <th>Codigo</th>
+                <th>Nombre</th>
+                <th>Estado</th>
+              </tr>
+            </thead>
+          </div>
+          {% for reservafalse in reservafalse %}
+            <tr>
+              <td>{{ reservafalse.Codigo_Reservas}}</td>
+              <td>{{ reservafalse.user.cli_Nombre}}</td>
+              {% if reservafalse.Estado_Reservas is False %}
+              <td> Check </td>
+              {% endif %}
+            </tr>
+          {% endfor %}
+          </table>
+          </div>
+      </div>
+{% endif %}
+
+
+{% if request.user.is_staff %}
+
+<div class="inicio-adm">
+  <div class="inicio-adm-titulo">
+      <h1><i class="fas fa-align-justify"></i> Elegir tarea a realizar</h1>
+  </div>
+  <div class="inicio-adm-opciones">
+       <div class="inicio-adm-opciones-botones1">
+         <a href="/mantener_cliente"><i class="fas fa-users"></i> Mantener Clientes</a> 
+       </div>
+       <div class="inicio-adm-opciones-botones2">
+         <a href="/mantener_departamento"><i class="fas fa-building"></i> Mantener Departamento</a> 
+       </div>
+       <div class="inicio-adm-opciones-botones7">
+        <a href="/reservando"><i class="fas fa-bed"></i> Mantener Reserva</a> 
+       </div>
+       <div class="inicio-adm-opciones-botones4">
+       <a href="/mantener_servicio"><i class="fas fa-hands-helping"></i> Mantener Servicios Basicos</a> 
+       </div>
+       <div class="inicio-adm-opciones-botones3">
+          <a href="/pagos_adm"><i class="fas fa-cash-register"></i> Pagos</a> 
+       </div>
+       <div class="inicio-adm-opciones-botones5">
+          <a href="/generar_estadistica"><i class="fas fa-chart-bar"></i> Generar Estadistica</a> 
+       </div>
+       <div class="inicio-adm-opciones-botones6">
+          <a href="/generar_informe"><i class="fas fa-file-alt"></i> Generar Informe</a> 
+       </div>
+        <div class="inicio-adm-opciones-botones8">
+           <a href="/perfiladministrador"><i class="fas fa-house-user"></i> Ver mi Perfil</a> 
+        </div>
+  </div>
+</div>
+
+{% endif %}
+
+
+{% if not request.user.is_staff and not request.user.funcionario %}
+
+
+
+<div class="informaciontur"> 
+  <div class="informacion-turismo">
+    <br>
+    <h2 align="center">¿Quienes Somos?</h2>
+    <br>
+    <p style="color:rgb(255, 255, 255); text-align: center;">
+      Somos una empresa dedicada al rubro de arriendo, trasnporte y turismo, por lo cual,
+      tenemos una alta gamma de servicios para ofrecerles, ademas, de 
+      una fascinante atencion del personal hacia el cliente, lo que hara, de tu experiencia la mejor.
+      <br>
+      Tenemos variados servicios con mucha comodidad, como es piscinas al aire libre, calefaccion, internet 
+      , tele cable, mas.
+      <br>
+      <br>
+    </p>
+    <br>
+    <h2 align="center">¿Mision? ¿Vision?</h2>
+    <br>
+    <p style="color:rgb(255, 255, 255); text-align: center;">
+      Nuestra mision es otorgarle al cliente, el mejor servicio que haya probado en su vida, 
+      consigo darle la mayor satisfaccion posible, para una estadia y viaje haga sentir estar en 
+      su propio hogar
+    </p>
+    <br>
+    <p style="color:rgb(255, 255, 255); text-align: center;">
+      Nuestra vision es posicionarnos como los mejores en el rubro de Arriendo, turismo y trasnporte de Chile,
+       por lo que, vamos bien encaminado
+    </p>
+  </div>
+</div>
+
+{% if departamentoscliente %}
+<div id="content">
+  <div class="showcase block block-border-bottom-grey">
+    <div class="container">
+      <h2 class="block-title">
+        Departamentos 
+        </h2>
+      <div class="item-carousel" data-toggle="owlcarousel" data-owlcarousel-settings='{"items":4, "pagination":false, "navigation":true, "itemsScaleUp":true}'>
+        {% for departamentoscliente in departamentoscliente %}
+        <div class="item">
+          <a href="#" class="overlay-wrapper">
+            {% if departamentoscliente.Imagen_Recinto %}
+            <img src="{{ departamentoscliente.Imagen_Recinto.url }}" alt="Villaricon" class="img-responsive underlay">
+            {% endif %}
+              <span class="overlay">
+                <span class="overlay-content"> <span class="h4">Descripcion: {{ departamentoscliente.Descripcion_departamento}}</span> </span>
+                <span class="overlay-content"> <span class="h4">Cantidad Baños: {{ departamentoscliente.Baños}}</span> </span>
+                <span class="overlay-content"> <span class="h4">Calefacción: {{ departamentoscliente.Calefaccion}}</span> </span>
+                <span class="overlay-content"> <span class="h4">Internet: {{ departamentoscliente.Internet}}</span> </span>
+                <span class="overlay-content"> <span class="h4">Amoblado: {{ departamentoscliente.Amoblado}}</span> </span>
+                <span class="overlay-content"> <span class="h4">Televisión: {{ departamentoscliente.Televicion}}</span> </span>
+                <span class="overlay-content"> <span class="h4">Disponible: {{ departamentoscliente.Disponible}}</span> </span>     
+               </span>
+            </a>
+          <div class="item-details bg-noise">
+            <h4 class="item-title">
+              <a href="#">Nombre departamento: {{ departamentoscliente.Nombre_Departamento}}</a>
+            </h4>
+            <h4 class="item-title">
+                <a href="#">Numero de Propiedad: {{ departamentoscliente.Numero_propiedad}}</a>
+              </h4>
+            <h4 class="item-title">
+                <a href="#">Direccion: {{ departamentoscliente.Direccion_departamento}}</a>
+              </h4>
+            <h4 class="item-title">
+                <a href="#">Internet: {{ departamentoscliente.Internet}}</a>
+              </h4>
+            <h4 class="item-title">
+                <a href="#">Valor: ${{ departamentoscliente.Valor_Diario|floatformat:2}}</a>
+              </h4>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+{% else %}
+<div id="resultadolisto">
+<br> <br> <br> 
+<h2>No hay registros de departamento</h2>
+<br> <br> 
+</div>
+{% endif %}
+{% if vehiculo %}
+<div id="content">
+  <div class="showcase block block-border-bottom-grey">
+    <div class="container">
+      <h2 class="block-title">
+        Vehiculo 
+        </h2>
+      <div class="item-carousel" data-toggle="owlcarousel" data-owlcarousel-settings='{"items":4, "pagination":false, "navigation":true, "itemsScaleUp":true}'>
+        {% for vehiculo in vehiculo %}
+        <div class="item">
+          <a href="#" class="overlay-wrapper">
+            {% if vehiculo.imagen_vehiculo %}
+            <img src="{{ vehiculo.imagen_vehiculo.url }}" alt="Villaricon" class="img-responsive underlay">
+            {% endif %}
+              <span class="overlay">
+                <span class="overlay-content"> <span class="h4">Color Vehiculo: {{ vehiculo.color_vehiculo}}</span> </span>
+                <span class="overlay-content"> <span class="h4">Cantidad de Puertas: {{ vehiculo.cant_puerta}}</span> </span>
+                <span class="overlay-content"> <span class="h4">Aire Acondicionado: {{ vehiculo.aire_acondicionado}}</span> </span>
+               </span>
+            </a>
+          <div class="item-details bg-noise">
+            <h4 class="item-title">
+              <a href="#">Patente: {{ vehiculo.patente}}</a>
+            </h4>
+            <h4 class="item-title">
+              <a href="#">Disponibilidad: {{ vehiculo.disponibilidad_vehi}}</a>
+            </h4>
+            <h4 class="item-title">
+              <a href="#">Modelo: {{ vehiculo.modelo}}</a>
+            </h4>
+            <h4 class="item-title">
+              <a href="#">Marca: {{ vehiculo.marca}}</a>
+            </h4>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+{% else %}
+<div id="resultadolisto">
+<br> <br> <br> 
+<h2>No hay registros de vehiculos</h2>
+<br> <br> 
+</div>
+{% endif %}
+{% if tours %}
+<div id="content">
+  <div class="showcase block block-border-bottom-grey">
+    <div class="container">
+      <h2 class="block-title">
+        Tour 
+        </h2>
+      <div class="item-carousel" data-toggle="owlcarousel" data-owlcarousel-settings='{"items":4, "pagination":false, "navigation":true, "itemsScaleUp":true}'>
+        {% for tours in tours %}
+        <div class="item">
+          <a href="#" class="overlay-wrapper">
+            {% if tours.imagen_tour %}
+            <img src="{{ tours.imagen_tour.url }}" alt="Villaricon" class="img-responsive underlay">
+            {% endif %}
+              <span class="overlay">
+                <span class="overlay-content"> <span class="h4">Descripcion: {{ tours.descripcion_tour}}</span> </span>
+               </span>
+            </a>
+          <div class="item-details bg-noise">
+            <h4 class="item-title">
+              <a href="#">Categoria: {{ tours.categoria}}</a>
+            </h4>
+            <h4 class="item-title">
+              <a href="#">Comestible: {{ tours.comestible}}</a>
+            </h4>
+            <h4 class="item-title">
+              <a href="#">Valor: {{ tours.valor_tour|floatformat:2}}</a>
+            </h4>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+{% else %}
+<div id="resultadolisto">
+<br> <br> <br> 
+<h2>No hay registros de tour</h2>
+<br> <br> 
+</div>
+{% endif %}
+  <div class="testimonios"> 
+      <div class="constainer">
+        <div class="boxi">
+          <div class="imgBox">
+            <img src="{% static 'img/people2.jpg' %}" alt="Project 3 image" class="img-responsive underlay">
+          </div>
+          <p style="color:rgb(61, 60, 60); text-align: justify; padding: 2%;">
+            Realmente TurismoReal es una clase de turismo de Primera Categoria,
+            me siento totalmente satisfecho por el servicio y el personal, por lo cual,
+            recomiendo a todas las personas venir a usar este grandioso servicio.
+          </p>
+          <h4>Martin Praderas<br><span>Cliente</span></h4>
+        </div>
+      </div>
+      <div class="constainer">
+        <div class="boxi">
+          <div class="imgBox">
+            <img src="{% static 'img/people4.jpg' %}" alt="Project 3 image" class="img-responsive underlay">
+          </div>
+          <p style="color:rgb(61, 60, 60); text-align: justify; padding: 2%;">
+            Al comienzo sentia un poco de curiosidad del servicio, ya que, nunca tuve una referencia
+            de este lugar para saber que pasaria, pero luego cuando llege, el personal 
+            me hizo sentir como si estuviese en casa. La comodidad ahi es esplendida, 
+            juro que vendre nuevamente a este maravilloso lugar.
+          </p>
+          <h4>Manuela Bolivar<br><span>Cliente</span></h4>
+        </div>
+      </div>
+      <div class="constainer">
+        <div class="boxi">
+          <div class="imgBox">
+            <img src="{% static 'img/people6.jpg' %}" alt="Project 3 image" class="img-responsive underlay">
+          </div>
+          <p style="color:rgb(61, 60, 60); text-align: justify; padding: 2%;">
+            Un lugar de primera categoria, considero que es uno de los mejores 
+            servicios que he recibido en la vida, de tal forma, que vendria una y 
+            otra vez aqui, debido a su calidad, agradezco el servicio.
+          </p>
+          <h4>Manuel Rodriguez<br><span>Cliente</span></h4>
+        </div>
+      </div>
+</div> 
+
+{% endif %}
+
+
+{% endblock %}

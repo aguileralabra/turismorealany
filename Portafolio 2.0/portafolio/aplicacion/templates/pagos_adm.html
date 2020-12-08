@@ -1,0 +1,62 @@
+{% extends "cliente_generic.html" %}
+{% load static %}
+
+{% block content %}
+<br>  
+<div class="reserva-arriendo">
+ <div class="contenedor">
+     <form action="" class="form" method="POST">
+     <div class="form-header">
+         <h1 class="form-title">Hacer<span> Pagos</span></h1>
+     </div> 
+     <div class="texto-reserva">
+         <p>Hacer pagos de dividendo, multa, reserva u otro servicio.
+         </p>
+     </div>
+        <select name="deporte">
+            <option>dividendo</option>
+            <option>multa</option>
+            <option>reserva</option>
+            <option>contribucion</option>
+        </select>
+            <br><br>
+            {% csrf_token %}
+            <div id="paypal-button-container"></div>
+        </form>
+ </div>
+</div>
+      <script
+      src="https://www.paypal.com/sdk/js?client-id=AQ0y3vHRdaveY0MQP23VNzQx7g0ta4d1ZaNYdgFp3Zdps2DUo_5OjeJYhJAXOasYwhXC5sZ_dkHTDXcM"> // Required. Replace SB_CLIENT_ID with your sandbox client ID.
+      </script>
+      <script>
+        paypal.Buttons({
+          createOrder: function(data, actions) {
+            // This function sets up the details of the transaction, including the amount and line item details.
+            return actions.order.create({
+              purchase_units: [{
+                amount: {
+                  value: '0.01'
+                }
+              }]
+            });
+          },
+          onApprove: function(data) {
+            return fetch('/pago/', {
+              method:'POST',
+              headers: {
+                'content-type': 'application/json',
+                'X-CSRFToken': csrftoken,
+              },
+              body: JSON.stringify({
+                orderID: data.orderID
+              })
+            }).then(function(res) {
+              return res.json();
+            }).then(function(details) {
+              alert(' ' + details.mensaje);
+            })
+           }
+        }).render('#paypal-button-container');
+        //This function displays Smart Payment Buttons on your web page.
+      </script>
+{% endblock %}

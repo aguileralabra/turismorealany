@@ -1,0 +1,50 @@
+{% extends "cliente_generic.html" %}
+
+{% load static %}
+
+
+
+{% block content %}
+<br>  
+<div class="reserva-arriendo">
+ <div class="contenedor">
+     <form action="" class="form" method="POST">
+     <div class="form-header">
+         <h1 class="form-title">Modificar<span> Conductor</span></h1>
+     </div> 
+     <div class="texto-reserva">
+         <p>Aqui podras modificar a un conductor
+         </p>
+     </div>
+              <label>Rut</label><br>
+              {{ form.cond_rut }}<br><br><br>
+
+              <label>Nombre</label><br>
+              {{ form.cond_nombre }}<br><br><br>
+
+              <label>Apellido</label><br>
+              {{ form.cond_apellidos}}<br><br><br>
+
+              <label>Edad</label><br>
+              {{ form.cond_edad }}<br><br><br>
+
+              <label>Nacionalidad</label><br>
+              {{ form.cond_nacionalidad }}<br><br><br>  
+
+              <label>Correo Electronico</label><br>   
+              {{ form.cond_email }}<br><br><br>    
+  
+              <label>Telefono</label><br>   
+              {{ form.cond_telefono }}<br><br><br>   
+
+              <label>Vehiculo a cargo</label><br>   
+              {{ form.vehiculo }}<br><br><br>   
+              <br><br>
+              {% csrf_token %}
+              <input type="submit" class="form-submit" value="Modificar" onClick="verificarCasilla(this.form)">
+              <input type="reset" class="form-submit" value="Limpiar Formulario">
+    </form>
+ </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends "cliente_generic.html" %}
+
+{% load static %}
+
+
+
+{% block content %}
+<br>  
+<div class="reserva-arriendo">
+    <div class="contenedor">
+        <form action="" class="form" method="POST">
+          <div class="form-header">
+              <h1 class="form-title"><i class="fas fa-plus-circle"></i>Modificar <span> Multas </span></h1>
+          </div> 
+          <div class="texto-reserva">
+              <p>Modificar Multas
+              </p>
+          </div>
+          <label>Descripcion del motivo multa</label><br>
+          {{ form.descrip_multa }}<br><br><br>
+  
+          <label>Monto a cobro del a multa</label><br>
+          {{ form.monto_multa }}<br><br><br>
+
+          <label>Estado de la Multa</label><br>
+          {{ form.estado_multa }}<br><br><br>
+
+          <label>Codigo Reserva</label><br>
+          {{ form.reserva }}<br><br><br>
+          <br><br>
+          {% csrf_token %}
+              <input type="submit" class="form-submit" value="Actualizar" onClick="verificarCasilla(this.form)">
+              <input type="reset" class="form-submit" value="Limpiar Formulario">
+              <a href="/inicio">Volver al Menu</a>
+              </form>
+          </div>
+      </div>
+{% endblock %}

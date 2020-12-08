@@ -1,0 +1,97 @@
+{% extends "cliente_generic.html" %}
+
+{% load static %}
+
+
+
+{% block content %}
+
+{% if multa %}
+    <div class="listadoreserva">
+        <div class="container">
+        <h1><i class="fas fa-stream"></i>Listado de Multas añadidos</h1>
+        <div style="height:50px"></div>
+        <p class="lead">
+        <p>Aqui podra encontrar todas las multas hechas a lo largo del tiempo</p>
+        <p>Cantidad de Multas: "{{ multascount }}"</p>
+        <hr>
+        <input class="form-control col-md-3 light-table-filter" data-table="order-table" type="text" placeholder="Buscador..">
+        <br>
+        <br>
+        <table class="table table-bordered order-table ">
+          <thead>
+          <div class="nombrestr">
+            <tr>
+              <th>Descripcion de multa</th>
+              <th>Monto</th>
+              <th>Estado</th>
+              <th>Codigo Reserva</th>
+              <th>Modificar</th>
+              <th>Cancelar</th>
+            </tr>
+          </thead>
+        </div>
+        {% for multa in multa %}
+          <tr>
+            <td>{{ multa.descrip_multa}}</td>
+            <td>{{ multa.monto_multa}}</td>
+            {% if multa.estado_multa is False %}
+            <td> No pagado</td>
+            {% endif %}
+            {% if multa.estado_multa is True %}
+            <td> Pagado</td>
+            {% endif %}
+            <td>{{ multa.reserva}}</td>
+            <td><a href="/actualizarmulta/{{ multa.id }}">Modificar
+            <td><a href="/deletemulta/{{ multa.id }}">
+                Cancerlar
+            </a></td>
+        </tr>
+          </tr>
+        {% endfor %}
+        </table>
+        </div>
+    </div>
+{% else %}
+<div id="resultadolisto">
+  <br> <br> <br> 
+  <h2>No hay registros de Multas, favor añadir</h2>
+  <br> <br> 
+  </div>
+{% endif %}
+  <!-- Filtrado de ultimo registro-->
+  <div class="ultimo-post">
+      <h1>La ultima multa añadida</h1>
+      <p> <i class="fas fa-plus-circle"></i>
+        La descripcion del servicio "{{ multalast.descrip_multa }}"</p>
+  </div>
+      <!-- Formulario para registrar-->
+<div class="reserva-arriendo">
+  <div class="contenedor">
+      <form action="" class="form" method="POST">
+        <div class="form-header">
+            <h1 class="form-title"><i class="fas fa-plus-circle"></i>Mantener <span> Multas </span></h1>
+        </div> 
+        <div class="texto-reserva">
+            <p>Registrar Multas
+            </p>
+        </div>
+        <label>Descripcion del motivo multa</label><br>
+        {{ form.descrip_multa }}<br><br><br>
+
+        <label>Monto a cobro del a multa</label><br>
+        {{ form.monto_multa }}<br><br><br>
+
+        <label>Monto a cobro del a multa</label><br>
+        {{ form.reserva }}<br><br><br>
+
+        <br><br>
+        {% csrf_token %}
+        <input class="btn btn-lg btn-primary btn-block" type="submit" value="Registrar">
+        <input class="btn btn-lg btn-primary btn-block" type="reset" value="Limpiar Formulario"><br> 
+        <p class="m-b-0 m-t">¿Deseas volver al Check? <a href="/inicio">Haga Click Aqui</a>.</p>
+      </form>
+  </div>
+</div>
+
+{% endblock %}

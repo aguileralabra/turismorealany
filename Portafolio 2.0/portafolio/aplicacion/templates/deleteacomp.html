@@ -1,0 +1,20 @@
+{% extends "cliente_generic.html" %}
+{% load static %}
+
+
+{% block content %}
+<div class="reserva-arriendo">
+  <div class="contenedor">
+      <form action="" class="form" method="POST">
+      <div class="form-header">
+          <h1 class="form-title"><i class="fas fa-plus-circle"></i>Eliminar <span> Acompañante </span></h1>
+      </div> 
+      <br><br><br><br>
+      {% csrf_token %}
+      <p>confirme que desea eliminar a su acompañante</p>
+      <br><br><br>
+               <input class="btn btn-lg btn-primary btn-block" type="submit" value="Eliminar">
+              </form>
+           </div>
+       </div>
+{% endblock %}

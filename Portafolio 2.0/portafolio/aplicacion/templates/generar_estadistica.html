@@ -1,0 +1,63 @@
+{% extends "cliente_generic.html" %}
+{% load static %}
+
+{% block content %}
+
+<div class="inicio-adm">
+    <div class="inicio-adm-titulo">
+        <h1><i class="fas fa-align-justify"></i> Estadisticas</h1>
+    </div>
+    <div class="inicio-adm-opciones">
+         <div class="inicio-adm-opciones-botones1">
+           <a href=""><i class="fas fa-users"></i> Cant. Clientes</a>
+           <br><br>
+           <p>" {{ clientes }} "</p>
+         </div>
+         <div class="inicio-adm-opciones-botones2">
+           <a href=""><i class="fas fa-building"></i> Cant. Departamento</a> 
+           <br><br>
+           <p>" {{ departamentos }} "</p>
+         </div>
+         <div class="inicio-adm-opciones-botones7">
+          <a href=""><i class="fas fa-bed"></i> Cant. Reserva No Pagada</a>
+          <br><br>
+          <p>" {{ reservas }} "</p>
+        </div>
+         <div class="inicio-adm-opciones-botones4">
+         <a href=""><i class="fas fa-hands-helping"></i> Cant. Reserva Pagada</a> 
+         <br><br>
+         <p>" {{ servicios }} "</p>
+        </div>
+        <div class="inicio-adm-opciones-botones9">
+            <a href=""><i class="fas fa-money-bill-alt"></i> Ganancia Multa</a> 
+            <br><br>
+            <p>" {{ gananciamulta }} "</p>
+        </div>
+        <div class="inicio-adm-opciones-botones10">
+            <a href=""><i class="fas fa-money-bill-alt"></i> Ganancia Reserva</a> 
+            <br><br>
+            <p>" {{ gananciareserva }} "</p>
+        </div>
+        <div class="inicio-adm-opciones-botones1">
+            <a href=""><i class="fas fa-calendar-day"></i> Ganancia Hoy</a>
+            <br><br>
+            <p>" {{ num_ventas_hoy }} "</p>
+          </div>
+          <div class="inicio-adm-opciones-botones2">
+            <a href=""><i class="fas fa-calendar-day"></i> Ganancia semanal</a> 
+            <br><br>
+            <p>" {{ departamentos }} "</p>
+          </div>
+          <div class="inicio-adm-opciones-botones7">
+           <a href=""><i class="fas fa-calendar-day"></i> Ganancia mensual</a>
+           <br><br>
+           <p>" {{ reservas }} "</p>
+         </div>
+          <div class="inicio-adm-opciones-botones4">
+          <a href=""><i class="fas fa-calendar-day"></i> Ganancia Anual</a> 
+          <br><br>
+          <p>" {{ servicios }} "</p>
+         </div>
+    </div>
+  </div>
+{% endblock %}

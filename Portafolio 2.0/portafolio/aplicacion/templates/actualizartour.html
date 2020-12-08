@@ -1,0 +1,37 @@
+{% extends "cliente_generic.html" %}
+
+{% load static %}
+
+
+
+{% block content %}
+
+<div class="reserva-arriendo">
+    <div class="contenedor">
+        <form action="" class="form" method="POST">
+        <div class="form-header">
+            <h1 class="form-title">T<span>our</span></h1>
+        </div> 
+        <div class="texto-reserva">
+            <p>Modificaciones
+            </p>
+        </div>
+        <label>Descripcion del Tour</label><br>
+        {{ form.descripcion_tour }}<hr><br>
+        <label>Categoria del Tour</label><br>
+        {{ form.categoria }}<hr><br>
+        <label>Comestible</label><br>
+        {{ form.comestible }}<hr><br>
+        <label>Valor de este Tour</label><br>
+        {{ form.valor_tour }}<hr><br>
+        <label>Imagen del Tour</label><br>
+        {{ form.imagen_tour }}<hr><br>
+        <br><br>
+        {% csrf_token %}
+        <input type="submit" class="form-submit" value="Reservar" onClick="verificarCasilla(this.form)">
+        <input type="reset" class="form-submit" value="Limpiar Formulario">
+        </form>
+    </div>
+</div>
+
+{% endblock %}

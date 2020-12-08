@@ -1,0 +1,30 @@
+{% extends "base_generic.html" %}
+{% load static %}
+
+{% block content %}
+
+<div class="reserva-arriendo">
+  <div class="contenedor">
+      <form action="" class="form" method="POST">
+      <div class="form-header">
+          <h1 class="form-title"><i class="fas fa-user-lock"></i> Login <span> Cliente </span></h1>
+      </div> 
+      <div class="texto-reserva">
+          <p>Ingrese su cuenta.
+          </p>
+      </div>
+            <label>Nombre de Cliente</label><br>
+            <input type="text" name="username" placeholder="Nombre Usuario">
+            <label>Contraseña</label><br>
+            <input type="password" name="password" placeholder="Contraseña">
+            <br><br>
+               {% csrf_token %}
+               <input class="btn btn-lg btn-primary btn-block" type="submit" value="Ingresar">
+               <p class="m-b-0 m-t">¿Desea registrarse? <a href="/register">Haga Click Aqui</a></p> 
+             </form>
+           </div>
+       </div>
+ 
+
+
+{% endblock %}

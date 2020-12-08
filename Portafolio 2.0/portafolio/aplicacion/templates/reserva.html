@@ -1,0 +1,63 @@
+{% extends "cliente_generic.html" %}
+{% load static %}
+
+{% block content %}
+<div class="listadoreserva">
+  <div class="container">
+      <h1>Departamentos</h1>
+      <div style="height:50px"></div>
+      <p class="lead">
+      <hr>
+      <table class="table table-bordered order-table ">
+        <thead>
+        <div class="nombrestr">
+          <tr>
+            <th>Codigo</th>
+            <th>Nombre</th>
+            <th>Valor diario</th>
+            <th>Disponibilidad</th>
+            <th>Comuna</th>
+          </tr>
+        </thead>
+      </div>
+      {% for departamento in departamento %}
+        <tr>
+          <td>{{ departamento.Codigo}}</td>
+          <td>{{ departamento.Nombre_Departamento}}</td>
+          <td>{{ departamento.Valor_Diario}}</td>
+          <td>{{ departamento.Disponible}}</td>
+          <td>{{ departamento.comuna}}</td>
+          </tr>
+      {% endfor %}
+      </table>
+      </div>
+  </div>
+
+<div class="reserva-arriendo">
+  <div class="contenedor">
+      <form action="" class="form" method="POST">
+      <div class="form-header">
+          <h1 class="form-title"><i class="fas fa-plus-circle"></i>Reserva<span> Departamento </span></h1>
+      </div> 
+               <label>Codigo de departamento deseado</label><br>
+               {{ form.Codigo }}<hr><br>
+               <label>Cantidad de dias</label><br>
+               {{ form.count }}<hr><br>
+               <label>Cantidad de dias</label><br>
+               {{ form.Fecha_Reserva_Inicios }}<hr><br>
+               <label>Cantidad de dias</label><br>
+               {{ form.Fecha_Reserva_Terminos }}<hr><br>
+               <label>Servicios</label><br>
+               {{ form.servicioextra }}<hr><br>
+               {% if user is request.user %}
+               {{ form.user }}<hr><br>
+               {% endif %}
+               <br><br>
+               {% csrf_token %}
+               <input type="submit" class="form-submit" value="Reservar">
+               <input type="reset" class="form-submit" value="Limpiar Formulario">
+               <a href="/inicio">Volver al Menu</a>
+        </form>
+  </div>
+</div>
+{% endblock %}

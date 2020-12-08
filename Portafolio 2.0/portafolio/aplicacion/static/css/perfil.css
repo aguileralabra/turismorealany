@@ -1,0 +1,155 @@
+.Containers{
+background: rgb(7, 7, 7);
+padding: 2%;
+color: coral;
+}
+.botones{
+    font-size: 17px;
+    display: inline;
+    justify-content: space-around;
+    align-items: center;
+}
+.nav-brand{
+    width: 55px;
+}
+.botones ul li a {
+    padding: 8px;
+}
+.botones ul li a:hover {
+    border-bottom: 2px solid #ffffff;
+    animation: none;
+}
+.botones ul{
+    display: flex;
+}
+.nav-main ul{
+    display: flex;
+}
+.nav-main ul.nav-menu{
+    flex: 1;
+    margin: 20px;
+}
+.nav-main ul.nav-menu-rigth{
+    margin-right: 50px ;
+}
+.social{
+    margin: 50 px;
+}
+.social p{
+    text-align: center;
+    font-size:30px;
+    margin-bottom: 20px;
+}
+.links{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.links a {
+    margin: 0 30px;
+}
+.links a i{
+   font-size: 3rem;
+}
+.menu2{
+    background: #0000009f;
+    padding: 7%;
+    border-radius: 5px;
+}
+
+.menu2 li{
+    text-align: left;
+    font-size:20px;
+    margin-bottom: 30px;
+    justify-content: center;
+    align-items: center;
+}
+
+.menu2 h2{
+    color: #ffffff;
+    text-align: center;
+}
+
+.menu2 h3{
+    color: #eb8110;
+    text-align: center;
+}
+
+.menu2 p{
+    color: #ffffff;
+    text-align: center;
+}
+
+.menu2 li .botones-perfil a{
+    color: rgb(255, 255, 255);
+    text-align: center;
+    background: orange;
+    border-radius: 5px;
+    padding: 3%;
+    margin-top: 1%;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+.menu2 li .botones-perfil {
+    justify-content: center;
+    align-items: center;
+}
+
+.detalle{
+    background: rgb(99, 99, 99);
+    padding: 2%;
+    border-radius: 5px;
+    margin: 3%
+}
+
+.detalle h4{
+    color: orange;
+    text-align: center;
+}
+
+.detalle span{
+    color: orange;
+}
+
+.detalle p{
+    color:wheat;
+    text-align: justify;
+}
+
+.detalle a{
+    color:wheat;
+    background: orange;
+    text-align: left;
+    padding: 3%;
+    margin: 5%;
+    border-radius: 5px;
+}
+
+
+.gestiones{
+    padding: 3%;
+    margin: 3%;
+    background: rgb(101, 101, 101);
+    border-radius: 5px;
+}
+
+.gestiones h4{
+    text-align: center;
+    color: rgb(255, 255, 255);
+    font-size: 30px;
+}
+
+.gestiones p{
+    text-align: center;
+    color: wheat;
+}
+
+.gestiones a{
+    text-align: center;
+    display: inline-block;
+    width: 100%;
+    padding: 3%;
+    border-bottom: 2px solid orange;
+}

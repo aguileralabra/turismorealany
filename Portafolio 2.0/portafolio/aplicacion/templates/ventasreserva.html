@@ -1,0 +1,46 @@
+{% extends "cliente_generic.html" %}
+{% load static %}
+
+
+{% block content %}
+
+<div class="listadoreserva">
+    <div class="container">
+    <h1><i class="fas fa-stream"></i>Ventas Realizadas</h1>
+    <div style="height:50px"></div>
+    <p class="lead">
+    <a href="/reservando">Volver atras</a>
+    <br>
+    <br>
+    <input class="form-control col-md-3 light-table-filter" data-table="order-table" type="text" placeholder="Buscador..">
+
+    <table class="table table-bordered order-table ">
+      <thead>
+      <div class="nombrestr">
+        <tr>
+          <th>Numero</th>
+          <th>Fecha Venta</th>
+          <th>Cantidad Dias</th>
+          <th>Monto</th>
+          <th>Usuario</th>
+          <th>Cancelar</th>
+        </tr>
+      </thead>
+    </div>
+    {% for ventas in ventas %}
+      <tr>
+        <td>{{ ventas.id }}</td>
+        <td>{{ ventas.date_sale}}</td>
+        <td>{{ ventas.count}}</td>
+        <td>{{ ventas.amount}}</td>
+        <td>{{ ventas.user}}</td>
+        <td><a href="{% url 'cliente_app:cancelarventa' ventas.id %}">
+            Cancerlar
+        </a></td>
+      </tr>
+    {% endfor %}
+    </table>
+    </div>
+</div>
+
+{%  endblock%}

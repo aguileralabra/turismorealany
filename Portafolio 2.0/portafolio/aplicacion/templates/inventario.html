@@ -1,0 +1,57 @@
+{% extends "cliente_generic.html" %}
+{% load static %}
+
+{% block content %}
+
+<div class="listadoreserva">
+    <div class="container">
+        <h1>Inventario</h1>
+        <br>
+        <table class="table table-bordered order-table ">
+          <thead>
+          <div class="nombrestr">
+            <tr>
+              <th>Identificador</th>
+              <th>Reparacion</th>
+              <th>Mejoramiento</th>
+              <th>Eliminar</th>
+            </tr>
+          </thead>
+        </div>
+          <tr>
+            {% for inventario in inventario %}
+            <td>{{ inventario.id}}</td>
+            <td>{{ inventario.reparacion}}</td>
+            <td>{{ inventario.mejoramiento}}</td>
+            <td><a href="/deleteinventario/{{ inventario.id }}" 
+                onClick="return confirm('¿Seguro que quieres eliminarel inventario?');">
+                    Borrar
+            </a></td>
+           </tr>
+          {% endfor %}
+        </table>
+        </div>
+    </div>
+</div>
+<div class="reserva-arriendo">
+    <div class="contenedor">
+        <form action="" class="form" method="POST">
+        <div class="form-header">
+            <h1 class="form-title">Crear<span> Inventario</span></h1>
+        </div> 
+        <div class="texto-reserva">
+            </p>
+        </div>
+              <label>Reparacion</label><br>
+              {{ form.reparacion }}<hr><br>
+              <label>Mejoramiento</label><br>
+              {{ form.mejoramiento }}<hr><br>
+                 <br><br>
+                 {% csrf_token %}
+                 <input type="submit" class="form-submit" value="Añadir" onClick="verificarCasilla(this.form)">
+                 <a href="/mantener_departamento">Volver al Menu</a>
+                 </form>
+            </div>
+     </div>
+</div>
+{% endblock %}

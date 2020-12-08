@@ -1,0 +1,82 @@
+{% extends "cliente_generic.html" %}
+
+{% load static %}
+
+
+
+{% block content %}
+<div class="reserva-arriendo">
+  <div class="contenedor">
+      <form action="" class="form" method="POST">
+      <div class="form-header">
+          <h1 class="form-title"><i class="fas fa-plus-circle"></i>Actualizar <span> Departamento </span></h1>
+      </div> 
+      <div class="texto-reserva">
+          <p>Actualizar Departamento
+          </p>
+      </div>
+              <label>Nombre Departamento</label><br>
+              <input type="text" id="Nombre_Departamento" class="" name="Nombre_Departamento" required>
+              
+              <label>Numero de Propiedad</label><br>
+              {{ form.Numero_propiedad }}
+
+              <label>Descripcion Departamento</label><br>
+              <textarea id="w3review" name="Descripcion_departamento" rows="2" cols="22,5" >
+              </textarea>
+
+              <label>Direccion del departamento</label><br>
+              <input type="text" id="Direccion_departamento" class="" name="Direccion_departamento" required>
+
+              <label>Numero de Habitaciones</label><br>
+              {{ form.habitaciones }}
+
+              <label>Numero de Baños</label><br>
+              {{ form.Baños }}
+
+              <label>Valor departamento diariamente</label><br>
+              {{ form.Valor_Diario }}
+
+              <label>Dividendo</label><br>
+              {{ form.dividendo }}
+
+              <label>Contribucion</label><br>
+              {{ form.contribucion }}
+
+              <label>Calefacción</label><br>
+              {{ form.Calefaccion }}
+
+              <label>Internet</label><br>
+              {{ form.Internet }}
+
+              <label>Amoblado</label><br>
+              {{ form.Amoblado }}
+
+              <label>Televisión</label><br>
+              {{ form.Televicion }}
+
+              <label>Disponibilidad</label><br>
+              {{ form.Disponible }}
+
+              <hr>
+              <label>Imagenes del Recinto</label><br>
+              {{ form.Imagen_Recinto }}
+
+              <label>Imagenes del Entorno</label><br>
+              {{ form.Imagen_Entorno }}
+
+              <hr>
+              <label>Comuna del Departamento</label><br>
+              {{ form.comuna }}
+
+              <label>Inventario adjudicado</label><br>
+              {{ form.inventario }}
+
+              <br><br>
+              {% csrf_token %}
+              <input class="btn btn-lg btn-primary btn-block" type="submit" value="Actualizar">
+              <p class="m-b-0 m-t">¿Deseas volver al menu? <a href="/inicio">Haga Click Aqui</a>.</p>
+      </form>
+  </div>
+</div>
+{% endblock %}

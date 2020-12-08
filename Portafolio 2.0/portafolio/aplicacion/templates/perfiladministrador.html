@@ -1,0 +1,54 @@
+{% extends "cliente_generic.html" %}
+{% load static %}
+
+{% block content %}
+
+<center> 
+<div class="menu2">
+ <ul class="menu2">
+     <h2><strong> Datos personales de administrador </strong></h2>
+     <br>
+     <li>
+        <h3>Correo</h3>
+        <p><a href="#">{{ user.username}}</a></p>
+    </li>
+    <li>
+        <h3>Correo</h3>
+        <p><a href="#">{{ user.email}}</a></p>
+    </li>
+    <li >
+        <h3>Nombre</h3>
+        <p><a href="#">{{ user.cli_Nombre}}</a></p>
+    </li>
+    <li>
+        <h3>Apellido</h3>
+        <p><a href="#">{{ user.cli_Apellidos}}</a></p>
+    </li>
+    <li>
+        <h3>Edad</h3>
+        <p><a href="#">{{ user.cli_Edad}}</a></p>
+    </li>
+    <li>
+        <h3>Nacionalidad</h3>
+        <p><a href="#">{{ user.cli_Nacionalidad}}</a></p>
+    </li>
+    <li>
+        <h3>Rut</h3>
+        <p><a href="#">{{ user.cli_Rut}}</a></p>
+    </li>
+
+    <li>
+        <h3>Telefono</h3>
+        <p><a href="#">{{ user.cli_Telefono}}</a></p>
+    </li>
+    <li>
+        <div class="botones-perfil">
+        <h3>Volver al Menu</h3>
+        <a href="/inicio">Volver al Menu</a>
+    </div>
+    </li>
+
+</div>
+</center>
+
+{% endblock %}

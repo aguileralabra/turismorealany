@@ -1,0 +1,61 @@
+{% extends "funcionario_generic.html" %}
+{% load static %}
+
+{% block content %}
+
+<div class="listadoreserva">
+    <div class="container">
+        <h1>Bienvenido</h1>
+        <div style="height:50px"></div>
+        <p class="lead">
+        <p>Listado de reservas</p>
+        <hr>
+        <p></p>
+        <input class="form-control col-md-3 light-table-filter" data-table="order-table" type="text" placeholder="Buscador..">
+        <br>
+        <br>
+        <table class="table table-bordered order-table ">
+          <thead>
+          <div class="nombrestr">
+            <tr>
+              <th>Codigo</th>
+              <th>Nombre</th>
+              <th>Departamento</th>
+              <th>Fecha</th>
+              <th>Servicios</th>
+              <th>Pago pendiente</th>
+              <th>Estado</th>
+              <th>Check in</th>
+              <th>Check out</th>
+            </tr>
+          </thead>
+        </div>
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td><center><button>Listado</button></center></td>
+            <td><center><button>Listado</button></center></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td><center><button>Listado</button></center></td>
+            <td><center><button>Listado</button></center></td>
+          </tr>
+        </table>
+        <p>Si desea registrar un listado haga click en el siguiente link <a href="#"> Realizar un listado</a></p>
+        </div>
+    </div>
+
+
+{% endblock %}

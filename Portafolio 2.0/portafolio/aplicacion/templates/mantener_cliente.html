@@ -1,0 +1,109 @@
+{% extends "cliente_generic.html" %}
+
+{% load static %}
+
+
+
+{% block content %}
+
+{% if usuario %}
+    <div class="listadoreserva">
+        <div class="container">
+            <h1><i class="fas fa-stream"></i>Listado de Usuarios</h1>
+            <div style="height:50px"></div>
+            <p class="lead">
+            <p>Todos los Clientes registrado en el sistema</p>
+            <p>Cantidad de Clientes: "{{ usercount }}"</p>
+            <hr>
+            <input class="form-control col-md-3 light-table-filter" data-table="order-table" type="text" placeholder="Buscador..">
+            <br>
+            <br>
+            <table class="table table-bordered order-table ">
+            <thead>
+            <div class="nombrestr">
+                <tr>
+                <th>Rut</th>
+                <th>Nombre</th>
+                <th>Correo</th>
+                <th>Usuario</th>
+                <th>Acceso</th>
+                <th>Validar</th>
+                <th>Eliminar</th>
+
+                </tr>
+            </thead>
+            </div>
+            {% for usuario in usuario %}
+            <tr>
+                <td>{{ usuario.cli_Rut}}</td>
+                <td>{{ usuario.cli_Nombre}} {{ usuario.cli_Apellidos}}</td>
+                <td>{{ usuario.email}}</td>
+                <td>{{ usuario.username}}</td>
+                <td>{{ usuario.is_active}}</td>
+                <td><a href="/actualizaruser/{{ usuario.id }}">
+                    Validar
+                </a></td>
+                <td><a href="/deleteuser/{{ usuario.id }}">
+                      Eliminar
+                  </a></td>
+            </tr>
+            </tr>
+            {% endfor %}
+            </table>
+        </div>
+    </div>
+    {% else %}
+    <div id="resultadolisto">
+      <br> <br> <br> 
+      <h2>No hay registros de Clientes, favor añadir</h2>
+      <br> <br> 
+      </div>    
+    {% endif %}
+    <!-- Filtrado de ultimo registro-->
+    <div class="ultimo-post">
+      <h1>El ultimo cliente añadido</h1>
+      <p> <i class="fas fa-plus-circle"></i>
+        El rut del cliente "{{ userultimo.cli_Rut }}", su nombre de usuario "{{ userultimo.username }}"</p>
+      </div>
+      <!-- Formulario para registrar-->
+      <br>  
+      <div class="reserva-arriendo">
+       <div class="contenedor">
+           <form action="" class="form" method="POST">
+           <div class="form-header">
+               <h1 class="form-title"><i class="fas fa-plus-circle"></i>Registro <span> Cliente </span></h1>
+           </div> 
+           <div class="texto-reserva">
+               <p>Registro de Cliente
+               </p>
+           </div>
+                 <label>Rut</label><br>
+                 {{ form.cli_Rut }}<br><br>
+                 <label>Nombre/s</label><br>
+                 {{ form.cli_Nombre }}<br><br> 
+                 <label>Apellido/s</label><br>
+                 {{ form.cli_Apellidos }}<br><br> 
+                 <label>Edad</label><br>
+                 {{ form.cli_Edad }}<br><br> 
+                 <label>Nacionalidad</label><br>
+                 {{ form.cli_Nacionalidad }}<br><br> 
+                 <label>Correo Electronico</label><br>   
+                 {{ form.email }}<br><br> 
+                 <label>Telefono</label><br>
+                 {{ form.cli_Telefono }}<br><br> 
+                 <label>Nombre Usuario</label><br>
+                 {{ form.username }}<br><br> 
+                 <label>Contraseña</label><br>   
+                 {{ form.password1 }}<br><br>      
+                 <label>Repetir Contraseña</label><br>   
+                 {{ form.password2 }}<br><br>          
+                    <br><br>
+                    {% csrf_token %}
+                    <input class="btn btn-lg btn-primary btn-block" type="submit" value="Registrar">
+                    <input class="btn btn-lg btn-primary btn-block" type="reset" value="Limpiar Formulario"><br> 
+                    <p class="m-b-0 m-t">¿Deseas volver al menu? <a href="/inicio">Haga Click Aqui</a>.</p>
+                  </form>
+                </div>
+            </div>
+
+{% endblock %}

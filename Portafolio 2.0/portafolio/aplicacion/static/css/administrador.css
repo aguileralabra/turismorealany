@@ -1,0 +1,248 @@
+.inicio-adm {
+    margin: 0;
+    padding: 5%;
+    background: rgb(30, 30, 30);
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.inicio-adm-titulo{
+    color: white;
+    text-align: center;
+    width: 100%;
+    margin-bottom: 5%;
+}
+
+.inicio-adm-opciones{
+    background: rgba(223, 223, 223, 0.666);
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    padding: 5px;
+    padding-bottom: 7%;
+    padding-top: 7%;
+    border-radius: 5px;
+}
+
+.inicio-adm-opciones-botones1{
+    background: rgb(43, 43, 43);
+    color: white;
+    padding: 3px;
+    margin: 3px;
+    width: 24%;
+    border-radius: 5px;
+    box-shadow: 3px 3px rgba(0, 0, 0, 0.589);
+    text-align: center;
+    padding-bottom: 3%;
+    padding-top: 3%;
+    margin-bottom: 5%;
+}
+
+.inicio-adm-opciones-botones2{
+    background: rgb(43, 43, 43);
+    color: white;
+    padding: 3px;
+    margin: 3px;
+    width: 24%;
+    border-radius: 5px;
+    box-shadow: 3px 3px rgba(0, 0, 0, 0.589);
+    text-align: center;
+    padding-bottom: 3%;
+    padding-top: 3%;
+    margin-bottom: 5%;
+}
+.inicio-adm-opciones-botones3{
+    background: rgb(43, 43, 43);
+    color: white;
+    padding: 3px;
+    margin: 3px;
+    width: 24%;
+    border-radius: 5px;
+    box-shadow: 3px 3px rgba(0, 0, 0, 0.589);
+    text-align: center;
+    padding-bottom: 3%;
+    padding-top: 3%;
+    margin-bottom: 5%;
+}
+.inicio-adm-opciones-botones4{
+    background: rgb(43, 43, 43);
+    color: white;
+    padding: 3px;
+    margin: 3px;
+    width: 24%;
+    border-radius: 5px;
+    box-shadow: 3px 3px rgba(0, 0, 0, 0.589);
+    text-align: center;
+    padding-bottom: 3%;
+    padding-top: 3%;
+    margin-bottom: 5%;
+}
+.inicio-adm-opciones-botones5{
+    background: rgb(43, 43, 43);
+    color: white;
+    padding: 3px;
+    margin: 3px;
+    width: 24%;
+    border-radius: 5px;
+    box-shadow: 3px 3px rgba(0, 0, 0, 0.589);
+    text-align: center;
+    padding-bottom: 3%;
+    padding-top: 3%;
+    margin-bottom: 5%;
+}
+.inicio-adm-opciones-botones6{
+    background: rgb(43, 43, 43);
+    color: white;
+    padding: 3px;
+    margin: 3px;
+    width: 24%;
+    border-radius: 5px;
+    box-shadow: 3px 3px rgba(0, 0, 0, 0.589);
+    text-align: center;
+    padding-bottom: 3%;
+    padding-top: 3%;
+    margin-bottom: 5%;
+}
+.inicio-adm-opciones-botones7{
+    background: rgb(43, 43, 43);
+    color: white;
+    padding: 3px;
+    margin: 3px;
+    width: 24%;
+    border-radius: 5px;
+    box-shadow: 3px 3px rgba(0, 0, 0, 0.589);
+    text-align: center;
+    padding-bottom: 3%;
+    padding-top: 3%;
+    margin-bottom: 5%;
+}
+.inicio-adm-opciones-botones8{
+    background: rgb(43, 43, 43);
+    color: white;
+    padding: 3px;
+    margin: 3px;
+    width: 24%;
+    border-radius: 5px;
+    box-shadow: 3px 3px rgba(0, 0, 0, 0.589);
+    text-align: center;
+    padding-bottom: 3%;
+    padding-top: 3%;
+    margin-bottom: 5%;
+}
+.inicio-adm-opciones-botones9{
+    background: rgb(43, 43, 43);
+    color: white;
+    padding: 3px;
+    margin: 3px;
+    width: 49%;
+    border-radius: 5px;
+    box-shadow: 3px 3px rgba(0, 0, 0, 0.589);
+    text-align: center;
+    padding-bottom: 3%;
+    padding-top: 3%;
+    margin-bottom: 5%;
+}
+
+.inicio-adm-opciones-botones10{
+    background: rgb(43, 43, 43);
+    color: white;
+    padding: 3px;
+    margin: 3px;
+    width: 49%;
+    border-radius: 5px;
+    box-shadow: 3px 3px rgba(0, 0, 0, 0.589);
+    text-align: center;
+    padding-bottom: 3%;
+    padding-top: 3%;
+    margin-bottom: 5%;
+}
+
+.inicio-adm-opciones-botones1:hover{
+    background: rgb(71, 71, 71);
+}
+
+.inicio-adm-opciones-botones2:hover{
+    background: rgb(71, 71, 71);
+}
+
+.inicio-adm-opciones-botones3:hover{
+    background: rgb(71, 71, 71);
+}
+
+.inicio-adm-opciones-botones4:hover{
+    background: rgb(71, 71, 71);
+}
+
+.inicio-adm-opciones-botones5:hover{
+    background: rgb(71, 71, 71);
+}
+
+.inicio-adm-opciones-botones6:hover{
+    background: rgb(71, 71, 71);
+}
+
+.inicio-adm-opciones-botones7:hover{
+    background: rgb(71, 71, 71);
+}
+
+.inicio-adm-opciones-botones8:hover{
+    background: rgb(71, 71, 71);
+}
+
+@media screen and (max-width: 700px) {
+    .inicio-adm-opciones-botones1 {
+      width: 100%;
+    }
+    .inicio-adm-opciones-botones2 {
+        width: 100%;
+      }
+      .inicio-adm-opciones-botones3 {
+        width: 100%;
+      }
+      .inicio-adm-opciones-botones4 {
+        width: 100%;
+      }
+      .inicio-adm-opciones-botones5 {
+        width: 100%;
+      }
+      .inicio-adm-opciones-botones6 {
+          width: 100%;
+        }
+        .inicio-adm-opciones-botones7 {
+          width: 100%;
+        }
+        .inicio-adm-opciones-botones8 {
+          width: 100%;
+        }
+}
+
+.paginacion {
+	margin:20px 0;
+}
+ 
+.paginacion ul {
+	list-style:none;
+	text-align: center;
+}
+ 
+.paginacion ul li {
+	display:inline-block;
+	margin-right:10px;
+}
+ 
+.paginacion ul li a {
+	display:block;
+	padding:10px 20px;
+	color:#fff;
+	background:#f3a617;
+	text-decoration: none;
+}
+ 
+.paginacion ul li a:hover {
+	background:#037E8C;
+}
+ 
+.paginacion ul li .active {
+	background:#037E8C;
+	font-weight:bold;
+}

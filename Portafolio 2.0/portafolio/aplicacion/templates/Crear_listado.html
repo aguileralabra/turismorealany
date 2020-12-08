@@ -1,0 +1,112 @@
+{% extends "funcionario_generic.html" %}
+{% load static %}
+
+{% block content %}
+<link href="{% static 'css/formulario.css' %}" rel="stylesheet">
+<main>
+    <div class="body">
+      <center>
+      <div class="box">
+        <form> 
+          <h2>
+            Crear listado de cliente
+          </h2>
+
+          <br>
+          <br/>   
+          
+          <div class="inputBox">
+            <label for="txtCod">Codigo:</label>
+            <input type="text" maxlength="30" minlength="2" id="txtName"placeholder="Ingrese el Codigo" required/>
+            
+          </div>
+          <br>
+          
+          <div class="inputBox">
+            <label for="txtApe">Nombre:</label>
+            <input type="text" maxlength="30"minlength="2" id="txtApe"placeholder="Ingrese el nombre" required/>
+            
+          </div>
+          <div class="inputBox">
+            <label for="txtApe">Lugar:</label>
+            <input type="text" maxlength="30"minlength="2" id="txtApe"placeholder="Ingrese el lugar" required/>
+            
+          </div>
+
+          <div class="inputBox">
+            <label for="txtApe">Departamento:</label>
+            <input type="text" maxlength="30"minlength="2" id="txtApe"placeholder="Ingrese el Departamento" required/>
+            
+          </div>
+          
+
+          <br>
+          <div class="inputBox">
+            <label for="txtCorreo">Fecha:</label>
+             <input type="date" name="fecha">
+            
+          </div>
+ 
+
+          <div class="inputBox">
+            <label for="txtApe">Servicios:</label>
+            <input type="text" maxlength="30"minlength="2" id="txtApe"placeholder="Ingrese el Servicio" required/>
+        </div>
+
+        <div>
+            <p> <strong> Seleccionar el tipo de pago </strong></p>
+          <select name="menu">
+             <option selected>...</option>
+             <optgroup label="Tarjeta de credito">
+              <option value="1">Banco estado</option>
+              <option value="2">Banco Falabella</option>
+              <option value="3">Banco Riplay</option>
+              <option value="4">Banco Santander</option>
+              <option value="5">Banco Chile</option>
+
+            </optgroup>
+            <optgroup label="Tarjeta de debito">
+              <option value="6">Banco estado</option>
+
+             </optgroup>
+             </select>
+        </div>
+
+          <br>
+          <div>
+            <p><strong> Estado</strong> </p>
+             <select name="menu">
+                      <option value="1">...</option>
+                      <option value="2">Disponible</option>
+                     <option value="3">Ocupado</option>
+             </select>
+         </div>
+         <br>
+
+          
+            <p><strong> check in  </strong> </p>
+            <textarea name="texto" rows="4" cols="40" placeholder="Escriba check in"></textarea>
+
+            <p><strong> check out  </strong> </p>
+            <textarea name="texto" rows="4" cols="40" placeholder="Escriba check out"></textarea>
+            
+         
+
+         
+    
+
+          <br>
+          
+          <input type="submit" name="" value="Agregar">
+          <input type="reset" name="" value="Borrar">
+          
+
+          <br>
+          <br /> 
+        </form>    
+      </div>
+      </center>
+    </div>
+  </main>
+
+{% endblock %}

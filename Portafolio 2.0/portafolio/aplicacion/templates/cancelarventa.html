@@ -1,0 +1,25 @@
+{% extends "cliente_generic.html" %}
+{% load static %}
+
+
+{% block content %}
+<div class="reserva-arriendo">
+  <div class="contenedor">
+      <form action="" class="form" method="POST">
+      <div class="form-header">
+          <h1 class="form-title"><i class="fas fa-plus-circle"></i>Cancelar <span> Reserva </span></h1>
+      </div> 
+      <br><br><br><br>
+      {% csrf_token %}
+      <p class="cell" style="margin-bottom: 1em; text-align: center;">¿Desea eliminar la Reserva adjudicada a esta venta?</p> 
+      <p>ID: {{ venta.id }}</p>
+      <p>FECHA: {{ venta.date_sale }}</p>
+      <p>CANTIDAD PRODUCTOS: {{ venta.count }}</p>
+      <p>TIPO DE COMPROBANTE: {{ venta.get_type_invoce_display }}</p>
+      <p>TIPO DE PAGO: {{ venta.get_type_payment_display }}</p>
+      <br><br><br>
+      <input class="btn btn-lg btn-primary btn-block" type="submit" value="Cancelar">
+      </form>
+  </div>
+</div>
+{% endblock %}

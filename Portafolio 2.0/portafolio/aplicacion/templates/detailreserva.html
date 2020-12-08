@@ -1,0 +1,40 @@
+{% extends "cliente_generic.html" %}
+{% load static %}
+
+
+{% block content %}
+
+{% if reserva %}
+<div class="detalle">
+    <h4>Cliente asociado {{ reserva.user }}</h4>
+    <p><span>Codigo de la Reserva: </span>{{ reserva.Codigo_Reserva }}</p>
+    <p><span>Fecha de Reserva de Inicio: </span>{{ reserva.Fecha_Reserva_Inicio }}</p>
+    <p><span>Fecha de Termino de la Reserva: </span>{{ reserva.Fecha_Reserva_Termino }}</p>
+    <p><span>Cantidad de dias: </span>{{ reserva.Cantidad_Dias }}</p>
+    <p><span>Estado de la Reserva: </span>{{ reserva.Estado_Reserva }}</p>
+    <p>{% for serv in reserva.servicioextra.all %}
+        <li>{{ serv }}</li>
+       {% endfor %}
+    </p>
+    <br><hr>
+    <h4>Departamento {{ reserva.departamento }}</h4>
+    <p><span>Decripcion: </span>{{ reserva.departamento.Descripcion_departamento }}</p>
+    <p><span>Calefaccion: </span>{{ reserva.departamento.Calefaccion }}</p>
+    <p><span>Internet: </span>{{ reserva.departamento.Internet }}</p>
+    <p><span>Amoblado: </span>{{ reserva.departamento.Amoblado }}</p>
+    <p><span>Comuna: </span>{{ reserva.departamento.comuna }}</p>
+    <p><span>Direccion: </span>{{ reserva.departamento.Direccion_departamento }}</p>
+    <br><hr>
+    <br>
+    <br>
+    <br>
+    <a href="{% url 'cliente_app:reserva_all' reserva.id %} " target="_blank">Archivo PDF</a>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br> 
+</div>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,112 @@
+.contacto{
+    background: grey;
+    padding: 4%;
+}
+
+.contacto .contacto-contenido{
+    background: rgb(94, 94, 94);
+    padding: 4%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.titulo-contacto{
+    width: 100%;
+    text-align: center;
+    color: honeydew;
+    padding: 1%;
+}
+
+.escritura-contacto{
+    width: 50%;
+    padding: 1%;
+    background: rgb(51, 51, 51);
+    color: honeydew;
+    text-align: center;
+    border-radius: 5px;
+}
+
+.escritura-contacto p{
+    color: #ff851b;
+}
+
+.formulario-contacto{
+    width: 50%;
+    background: rgb(31, 31, 31);
+    padding: 1%;
+    color: honeydew;
+    text-align: center;
+    border-radius: 5px;
+}
+
+.form-contac input, textarea{
+    background: rgba(0,0,0,.7);
+    border: none;
+    outline: none;
+    border-bottom: 2px solid #ff851b;
+    width: 90%;
+    padding: 12px;
+    margin-bottom: 20px;
+    border-radius: 2px;
+    font-size: 14px;
+    color: #fff;
+}
+
+.form-contac select{
+    color: black;
+}
+
+
+.form-contac .form-submit{
+width: 90%;
+outline: none;
+background: #ff851b;
+font-size: 16px;
+border: none;
+color: #fff;
+padding: 15px 0;
+cursor: pointer;
+transition: all .5s ease;
+margin: 1%;
+}
+
+
+.escritura {
+    padding: 5%;
+    justify-content: center;
+    display: flexbox;
+    align-items: center;
+    }
+    
+    .escritura label{
+      text-align: center;
+    }
+    
+    .escritura .escrituraline{
+    padding: 1%;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    color: black;
+    }
+    
+    .panel-body{
+      background: rgb(226, 200, 147) ;
+      color: rgb(27, 27, 27);
+    padding: 10%;
+    }
+
+    .resultadotarjeta{
+        text-align: center;
+        background: rgb(226, 200, 147) ;
+        padding: 2%;
+        margin: 3%;
+        border-radius: 5px;
+    }
+
+    .escritura-contacto a{
+        padding: 10px;
+        border-bottom: 2px solid orange;
+        width: 100%;
+        text-align: center;
+        }

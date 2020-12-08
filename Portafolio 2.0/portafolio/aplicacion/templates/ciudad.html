@@ -1,0 +1,47 @@
+{% extends "cliente_generic.html" %}
+{% load static %}
+
+{% block content %}
+
+
+<div class="listadoreserva">
+    <div class="container">
+        <h1> Ciudades</h1>
+        <br>
+        <table class="table table-bordered order-table ">
+          <thead>
+          <div class="nombrestr">
+            <tr>
+              <th>Ciudad</th>
+            </tr>
+          </thead>
+        </div>
+          <tr>
+            {% for ciudad in ciudad %}
+            <td>{{ ciudad.descrip_ciudad}}</td>
+          </tr>
+          {% endfor %}
+        </table>
+        </div>
+    </div>
+</div>
+<div class="reserva-arriendo">
+    <div class="contenedor">
+        <form action="" class="form" method="POST">
+        <div class="form-header">
+            <h1 class="form-title">Agregar<span> Ciudad</span></h1>
+        </div> 
+        <div class="texto-reserva">
+            </p>
+        </div>
+              <label>Nombre de la Ciudad</label><br>
+              {{ form.descrip_ciudad }}<hr><br>
+                 <br><br>
+                 {% csrf_token %}
+                 <input type="submit" class="form-submit" value="Añadir" onClick="verificarCasilla(this.form)">
+                 <a href="/mantener_departamento">Volver al Menu</a>
+                 </form>
+            </div>
+     </div>
+</div>
+{% endblock %}

@@ -1,0 +1,83 @@
+para abrir ambiente virtual : ambiente\Scripts\activate
+correr aplicacion : python manage.py runserver0
+crear nuevo super usuario : python manage.py createsuperuser
+
+
+instalaciones 
+
+- pip install xhtml2pdf
+
+
+
+apoyo
+
+https://www.youtube.com/watch?v=j5EHL2K8TY0&ab_channel=Neunapp
+
+https://www.apsl.net/blog/2012/05/11/guardar-el-usuario-que-crea-un-objeto-desde-un-createview/
+
+https://developer.mozilla.org/es/docs/Learn/Server-side/Django/Authentication
+
+https://www.youtube.com/watch?v=KSFCQud4avc&ab_channel=moisessepulveda
+
+--Mercado Pago = Implementar pago (Pruebas)
+
+
+https://www.youtube.com/watch?v=zTrWdVFNX8k&ab_channel=CursosDesarrolloWeb
+
+https://www.youtube.com/c/Developerpe/videos
+
+--iconos
+https://fontawesome.com/icons/house-user?style=solid
+-------------------
+
+IMAGENES:
+https://djangocentral.com/uploading-images-with-django/
+
+OTRAS COSAS:
+https://algorisoft.com/courses/41aa1066-20d7-42b6-8533-5470caf76b4b/
+
+
+
+
+Paypal page
+https://developer.paypal.com/developer/applications/edit/SB:QVEweTN2SFJkYXZlWTBNUVAyM1ZOelF4N2cwdGE0ZDFaYU5ZZGdGcDNaZHBzMkRVb181T2plSlloSkFYT2FzWXdoWEM1c1pfZGtIVERYY00=?appname=django-pruebas
+
+https://developer.paypal.com/docs/checkout/integrate/
+
+manifest y service worker
+
+https://www.youtube.com/watch?v=0Kq4oeRfRW4&ab_channel=PatricioYa%C3%B1ez
+
+Listar Responsive
+
+https://aukera.es/blog/tabla-html-responsive/
+
+notificacion
+
+https://www.youtube.com/watch?v=qoar0veVJY4&t=321s&ab_channel=PatricioYa%C3%B1ez
+
+cuenta adm:
+jordancho
+afes123456
+
+
+filtro 
+
+obj = Model.objects.all().filter(user=request.user)
+
+Te recomiendo que revises la documentación. Lo que quieres hacer se obtiene con la suguiente consulta:
+
+from django.db.models import Sum
+Model.objects.all().aggregate(Sum('number'))
+El resultado es un diccionario que se ve mas o menos así:
+
+{'number__sum': 10}
+Si lo asignas a una variable, lo usarías de esta manera:
+
+obj = Model.objects.all().aggregate(Sum('number'))
+obj['number__sum'] += 1
+print (obj)
+>>> {'number__sum': 11}
+
+
+https://www.udemy.com/course/curso-profesional-de-programacion-web-con-python-y-django/learn/lecture/20172354#notes

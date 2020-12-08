@@ -1,0 +1,49 @@
+{% extends "cliente_generic.html" %}
+
+{% load static %}
+
+
+
+{% block content %}
+<div class="reserva-arriendo">
+    <div class="contenedor">
+        <form action="" class="form" method="POST">
+          <div class="form-header">
+              <h1 class="form-title"><i class="fas fa-plus-circle"></i>Actualizar <span> Servicios </span></h1>
+          </div> 
+          <div class="texto-reserva">
+              <p>Actualizar Servicios
+              </p>
+          </div>
+          <label>Descripcion del Servicio</label><br>
+          {{ form.descrip_servicio }}<br><br><br>
+  
+          <label>Direccion de Reunion</label><br>
+          {{ form.direccion_reunion }}<br><br><br>
+  
+          <label>Direccion de Destino</label><br>
+          {{ form.direccion_destino }}<br><br><br>
+  
+          <label>Fecha de encuentro</label><br>
+          {{ form.fecha_encuentro }}<br><br><br>
+  
+          <label>Fecha de termino</label><br>
+          {{ form.fecha_termino_servicio }}<br><br><br>  
+  
+          <label>Valor del servicio</label><br>   
+          {{ form.valor_servicio }}<br><br><br>    
+  
+          <label>Conductor</label><br>   
+          {{ form.conductor }}<br><br><br>   
+  
+          <label>Tour</label><br>   
+          {{ form.tour }}<br><br><br>   
+          <br><br>
+          {% csrf_token %}
+          <input class="btn btn-lg btn-primary btn-block" type="submit" value="Actualizar">
+          <input class="btn btn-lg btn-primary btn-block" type="reset" value="Limpiar Formulario"><br> 
+          <p class="m-b-0 m-t">¿Deseas volver al menu? <a href="/inicio">Haga Click Aqui</a>.</p>
+        </form>
+    </div>
+  </div>
+{% endblock %}

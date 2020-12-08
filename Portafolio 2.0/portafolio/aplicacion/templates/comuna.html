@@ -1,0 +1,50 @@
+{% extends "cliente_generic.html" %}
+{% load static %}
+
+{% block content %}
+
+<div class="listadoreserva">
+    <div class="container">
+        <h1>Comunas</h1>
+        <br>
+        <table class="table table-bordered order-table ">
+          <thead>
+          <div class="nombrestr">
+            <tr>
+              <th>Comuna</th>
+              <th>Ciudad</th>
+            </tr>
+          </thead>
+        </div>
+          <tr>
+            {% for comuna in comuna %}
+            <td>{{ comuna.descrip_comuna}}</td>
+            <td>{{ comuna.ciudad}}</td>
+          </tr>
+          {% endfor %}
+        </table>
+        </div>
+    </div>
+</div>
+<div class="reserva-arriendo">
+    <div class="contenedor">
+        <form action="" class="form" method="POST">
+        <div class="form-header">
+            <h1 class="form-title">Crear<span> Comuna</span></h1>
+        </div> 
+        <div class="texto-reserva">
+            </p>
+        </div>
+              <label>Nombre de la Comuna</label><br>
+              {{ form.descrip_comuna }}<hr><br>
+              <label>Ciudad perteneciente</label><br>
+              {{ form.ciudad }}<hr><br>
+                 <br><br>
+                 {% csrf_token %}
+                 <input type="submit" class="form-submit" value="Añadir" onClick="verificarCasilla(this.form)">
+                 <a href="/mantener_departamento">Volver al Menu</a>
+                 </form>
+            </div>
+     </div>
+</div>
+{% endblock %}

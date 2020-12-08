@@ -1,0 +1,20 @@
+{% extends "cliente_generic.html" %}
+{% load static %}
+
+{% block content %}
+<div id="resultadolisto">
+  <br> <br> <br> 
+  <h2>{{ user.username }} has registrado correctamente tu reserva</h2>
+  <br> <br>
+  <p>Haga click en el boton y descarge el informe en PDF. </p>
+  
+  <div id="botonregreso">
+    <br> <br>
+    {% for reservitapdf in reservitapdf %}
+    <a href="/lista-reserva/{{ reservitapdf.id }}" target="_blank">PDF de Reserva</a>
+    {% endfor %}
+  <br> <br> <br> 
+  <a href="/cliente">Volver a inicio</a>  </div>
+  <br> <br> <br> 
+  </div>
+{% endblock %}       

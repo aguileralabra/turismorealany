@@ -1,0 +1,39 @@
+{% extends "cliente_generic.html" %}
+
+{% load static %}
+
+
+
+{% block content %}
+<br>  
+<div class="reserva-arriendo">
+ <div class="contenedor">
+     <form action="" class="form" method="POST">
+     <div class="form-header">
+         <h1 class="form-title"><i class="fas fa-plus-circle"></i>Actualizar<span> Reserva </span></h1>
+     </div> 
+     <div class="texto-reserva">
+         <p>Actualizar Reserva
+         </p>
+     </div>
+           <label>Fecha de Ingreso</label><br>
+           {{ form.Fecha_Reserva_Inicio }}<hr><br>
+           <label>Fecha de Salida</label><br>
+           {{ form.Fecha_Reserva_Termino }}<hr><br>
+           <label>Departamento a Elegir</label><br>
+           {{ form.departamento }}<hr><br>
+           <label>Cantidad de dias</label><br>
+           {{ form.Cantidad_Dias }}<hr><br>
+           <label>Servicios Extras</label><br>
+           {{ form.servicioextra }}<hr><br>  
+           <label>Usuario</label><br>   
+           {{ form.user }}<hr><br>       
+              <br><br>
+              {% csrf_token %}
+              <input type="submit" class="form-submit" value="Actualizar" onClick="verificarCasilla(this.form)">
+              <input type="reset" class="form-submit" value="Limpiar Formulario">
+              <a href="/inicio">Volver al Menu</a>
+              </form>
+          </div>
+      </div>
+{% endblock %}

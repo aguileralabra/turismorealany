@@ -1,0 +1,64 @@
+{% extends "cliente_generic.html" %}
+{% load static %}
+
+{% block content %}
+
+{% if reservita %}
+
+<div class="listadoreserva">
+<div class="container">
+    <h1>Listado de Reservas</h1>
+    <div style="height:50px"></div>
+    <p class="lead">
+    <p>Aqui podra encontrar a todas tus reservas hechas a lo largo del tiempo</p>
+    <hr>
+    <input class="form-control col-md-3 light-table-filter" data-table="order-table" type="text" placeholder="Buscador..">
+    <br>
+    <br>
+    <table class="table table-bordered order-table ">
+      <thead>
+      <div class="nombrestr">
+        <tr>
+          <th>Departamento</th>
+          <th>Cantidad Dias</th>
+          <th>Fecha llegado</th>
+          <th>Fecha Termino</th>
+          <th>Codigo Reserva</th>
+          <th>Estado</th>
+          <th>Cancelar</th>
+          <th>Voucher</th>
+        </tr>
+      </thead>
+    </div>
+    {% for reservita in reservita %}
+      <tr>
+        <td>{{ reservita.departamento}}</td>
+        <td>{{ reservita.count}}</td>
+        <td>{{ reservita.Fecha_Reserva_Inicios}}</td>
+        <td>{{ reservita.Fecha_Reserva_Terminos}}</td>
+        <td>{{ reservita.Codigo_Reservas}}</td>
+        {% if reservita.Estado_Reservas is False %}
+        <td>Check</td>
+        {% endif %}
+        <td><a href="/cancelarreserva/{{ reservita.id }}">
+            Cancerlar
+        </a></td>
+        <td><a href="{% url 'cliente_app:reserva_all' reservita.id %} " target="_blank">Voucher</a></td>
+
+    </tr>
+      </tr>
+    {% endfor %}
+    </table>
+    <p>Si desea registrar una Reserva haga click en el siguiente link <a href="">Haga click aqui para Reserva</a></p>
+    </div>
+</div>
+{% else %}
+<div id="resultadolisto">
+  <br> <br> <br> 
+  <h2>No hay registros de Reservas, favor añadir</h2>
+  <br> <br> 
+  </div>
+{% endif %}
+
+
+{% endblock %}
